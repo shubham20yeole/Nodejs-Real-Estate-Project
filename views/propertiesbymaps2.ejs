@@ -1,0 +1,104 @@
+<% include partials/header1.ejs %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  
+  <!-- Start Proerty header  -->
+
+  <section id="aa-property-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-property-header-inner">
+            <h2>View Properties on map: By USA REAL ESTATES</h2>
+            <ol class="breadcrumb">
+            <li><a href="/">HOME</a></li>            
+            <li class="/properties/0">PROPERTIES</li>
+          </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <!-- End Proerty header  -->
+
+  <!-- Start Properties  -->
+  <section id="aa-properties">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="aa-properties-content">
+            <!-- start properties content head -->
+           
+            <!-- Start properties content body -->
+            <div class="aa-properties-content-body">
+                        
+            <script type="text/javascript" src="theme/js/propertiesbymaps.js"></script>
+            <link href="/theme/css/propertiesbymaps.css" rel="stylesheet">    
+            <link href="/theme/css/animation.css" rel="stylesheet">    
+
+ <% include partials/googlemap/earthquake.ejs %>
+  
+              
+              </ul>
+            </div>
+            <!-- Start properties content bottom -->
+          </div>
+        </div>
+        <!-- Start properties sidebar -->
+        <div class="col-md-4">
+          <aside class="aa-properties-sidebar">
+            <!-- Start Single properties sidebar -->
+            <div class="aa-properties-single-sidebar">
+              <h3>Property View</h3>
+              <form action="">
+                  <p id="lodardiv"></p>
+                <div class="aa-single-advance-search">
+                  <p id="title">Title</p>
+                  <img id="viewimage" src="/images/defaultimage.jpg" width="100%" height="100px">
+                  <br><br><label style="font-size: 1.5em;">Address:</label>
+                  <p id="address">Address</p>
+                  <br><label style="font-size: 1.5em;">Cost:</label>
+                  <p id="cost">USD</p>
+                  <br><label style="font-size: 1.5em;">Area/Room:</label><br>
+                  <div id="roomsdis"></div>
+                  <br><label style="font-size: 1.5em;">Description:</label>
+                  <p id="description">Description</p>
+                  <br><label style="font-size: 1.5em;">Features:</label>
+                  <div id="features">Features</div><br>
+                  <button id="readmorelink">----</button>
+                </div>
+                
+                </div>
+              </form>
+            </div> 
+            <!-- Start Single properties sidebar -->
+            
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Properties  -->
+
+  <!-- Footer -->
+<% include partials/footer.ejs %>
+  <!-- / Footer -->
+
+
+  <!-- jQuery library -->
+  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="../theme/js/jquery.min.js"></script>   
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../theme/js/bootstrap.js"></script>   
+  <!-- slick slider -->
+  <script type="text/javascript" src="../theme/js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="../text/javascript" src="theme/js/nouislider.js"></script>
+  
+  <!-- Custom js -->
+  <script src="../theme/js/custom.js"></script> 
+
+
+
+  </body>
+</html>

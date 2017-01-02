@@ -1,0 +1,75 @@
+     <div class="col-md-4">
+          <aside class="aa-properties-sidebar">
+            <!-- Start Single properties sidebar -->
+            <div class="aa-properties-single-sidebar">
+                
+              
+            </div> 
+            <!-- Start Single properties sidebar -->
+            <div class="aa-properties-single-sidebar">
+              <h3>Latest Properties</h3>
+              <% latestproperty.forEach(function(latestproperty){%>
+                 <div class="media">
+                  <div class="media-left">
+                    <a href="../detailedproperty/<%= latestproperty.timestamp %>" target="_blank">
+                      <img class="media-object" src="<%= latestproperty.image1 %>" alt="img">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading"><a href="../detailedproperty/<%= latestproperty.timestamp %>" target="_blank"><%= latestproperty.title %></a></h4>
+                    <p><%= latestproperty.discription %></p>                
+                    <p class="address">
+
+                    <a type="button" id="mapb" href="#popup1" onclick="init_map(<%= latestproperty.latitude %>,<%= latestproperty.longitude %>,'<h3><%= latestproperty.title %></h3><h6> Property Location</h6>')"><img src="../images/mappin.jpg" width="22" height="32"></a>
+
+
+                    &nbsp&nbsp&nbsp<%= latestproperty.fulladdress %>
+                      
+                    </p>                
+                    <p class="cost">$<%= latestproperty.cost %></p>
+                    <p class="readmore"><a href="../detailedproperty/<%= latestproperty.timestamp %>" target="_blank">READ MORE
+                    </a></p>
+                  </div>              
+                </div>
+              <%}) %>
+              
+          </aside>
+        </div>
+        <div id="popup1" class="overlay">X
+  <div class="popup">
+    <div class="content"><h1>USA REAL ESTATES</h1><h3>by Team 3 Pace University</h3>
+    <a class="close" href="#"> &times;</a>
+    </div>
+      <div id='gmap_canvas' style='height:440px;width:100%;'></div>
+    
+  </div>
+<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+
+<style type="text/css">
+
+</style>
+      </div>
+    </div>
+     <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAWPMDGHGh-KUNMkjSIlMBD1JMtTfbxk&callback=initMap">
+    </script>
+<style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+    <script type='text/javascript'>
+function init_map(x,y,z){
+  var myOptions = {center: myCenter,
+    zoom:15,center:new google.maps.LatLng(x,y),mapTypeId: google.maps.MapTypeId.MAP};
+    var myCenter = new google.maps.LatLng(x, y); 
+
+    map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+
+    marker = new google.maps.Marker({position: myCenter, map: map});
+
+    infowindow = new google.maps.InfoWindow({content:z});
+
+    google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
+
+    infowindow.open(map,marker);}
+</script>
+
+ </body>
+</html>

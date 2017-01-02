@@ -1,0 +1,25 @@
+.shubhampagination ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+.shubhampagination{ margin-top: 5px; margin-bottom: 5px }
+.shubhampagination li {
+    display: inline;
+    padding: 7px 20px 7px 20px;
+    border: 1px solid #ddd;
+}
+.shubhampagination li:hover {
+    display: inline;
+    border: 2px solid #1A237E;
+}
+.highlight{
+    color: white;
+    font-weight: bold;
+    background-color: #F2AB27;
+}
+.noclass{font-size: 20px; padding-left: 10px;}
+.pagenote{color: #2c387e; font-weight: bold; background-color: #E8EAF6}
+
+.shubhampagination{ font-weight: bold; }

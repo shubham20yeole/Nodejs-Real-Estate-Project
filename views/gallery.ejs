@@ -1,0 +1,96 @@
+<% include partials/header1.ejs %>
+  <!-- End menu section -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../theme/js/gallery.js"></script> 
+<link href="../theme/css/gallery.css" rel="stylesheet">   
+  <!-- Start Proerty header  -->
+
+  <section id="aa-property-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-property-header-inner">
+            <h2>Gallery</h2>
+            <ol class="breadcrumb">
+            <li><a href="#">HOME</a></li>            
+            <li class="active">Gallery</li>
+          </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <!-- End Proerty header  -->
+
+ <section id="aa-gallery">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-gallery-area">
+            <div class="aa-title">
+              <h2>Gallery View Page no: <%= pageno %></h2>
+              <span class="fa fa-home"></span>
+               <p>View images and select property</p>
+            </div>
+                <div class="shubhampagination">
+                  <ul class="pagination1"></ul><span style="float: right; margin-top: -10px"><%= status %></span>
+                </div>
+                <div class="aa-gallery-content">
+              <!-- Start gallery image -->
+              <div class="aa-gallery-body">
+                <!-- start single gallery image -->
+              <% property.forEach(function(property){%>
+                <div class="aa-single-gallery">                  
+                  <div class="aa-single-gallery-item">
+                    <div class="aa-single-gallery-img">
+                      <a href="#"><img src="<%= property.image1 %>" alt="img"></a>
+                    </div>
+                    <div class="aa-single-gallery-info">
+                       <a href="#"><span class="fa fa-search"></span></a>
+                    </div>  
+                    <div class="portfolio-detail">
+	                    <a href="#" class="modal-close-btn"><span class="fa fa-times"></span></a>
+	                    <img src="<%= property.image1 %>" alt="img-1" />
+	                    <h2><%= property.title %></h2>
+	                    <p><%= property.discription %></p>
+	                    <a href="/detailedproperty/<%= property.timestamp %>" class="view-project-btn" target="_blank">READ MORE?</a>
+	                </div>                
+                  </div>
+                </div>
+              <%}) %>
+                <!-- start single gallery image -->
+               <div class="shubhampagination">
+                  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><ul class="pagination1"></ul>
+                </div>
+               
+                <input type="hidden" value="<%= pageno %>" id="pagenohidden">
+                <input type="hidden" id="count" value="<%= count %>">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+<% include partials/footer.ejs %>
+  <!-- / Footer -->
+
+  <!-- jQuery library -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="../theme/js/jquery.min.js"></script>   
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../theme/js/bootstrap.js"></script>   
+  <!-- slick slider -->
+  <script type="text/javascript" src="../theme/js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="text/javascript" src="../theme/js/nouislider.js"></script>
+  
+  <!-- Custom js -->
+  <script src="../theme/js/custom.js"></script> 
+  
+  </body>
+</html>

@@ -1,0 +1,316 @@
+<% include partials/header1.ejs %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <section id="aa-property-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-property-header-inner">
+            <h2><%= property.title %></h2>
+            <ol class="breadcrumb">
+            <li><a href="#">HOME</a></li>            
+            <li class="active">APPARTMENT TITLE</li>
+          </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <!-- End Proerty header  -->
+
+  <!-- Start Properties  -->
+  <section id="aa-properties">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="aa-properties-content">            
+            <!-- Start properties content body -->
+            <div class="aa-properties-details">
+            <div id="imaages"></div>
+             <div class="aa-properties-details-img">
+               <% images.forEach(function(images){%>
+                  <img src="<%= images.image %>?i=1" class="imageurl" alt="img">
+                  
+               <%}) %>
+             
+             </div>
+<!--              <input type="text" value="<%= property.images %>" id="allimages">
+ -->             <input type="hidden" id="features" value="<%= property.features %>">
+             
+             <div class="aa-properties-info">
+                   <div id="showproperty">
+                            <hr>
+                            <h2>Title: <span id="showtitle"><%= property.title %></span></h2>
+                            <hr>
+                                                 
+                           
+                            
+                            <div class="section group">
+                              <div class="col span_1_of_3">
+                              <h3>Owner name:</h3><p id="showadd"><%= property.username %></p>
+                              </div>
+                              <div class="col span_1_of_3">
+                              <h3>Posted on:</h3><p id="showadd"><%= property.dateField %></p>
+                              </div>
+                              <div class="col span_1_of_3">
+                              <% if(users.fullname!= 'Anonymous'){%>
+                                <input type="hidden" id="bo-user-email" value="<%=users.email%>">
+                                <input type="hidden" id="bo-property-timestamp" value="<%=property.timestamp%>">
+                                <input type="hidden" id="bo-property-image" value="<%= property.image1 %>">
+                                <input type="hidden" id="bo-property-title" value="<%= property.title %>">
+                                <input type="hidden" id="bo-property-cost" value="<%= property.cost %>">
+                                <span id="bookmark">Bookmark: <i class="fa fa-star"></i></span><br>
+                                <div id="bo-lodardiv"></div>
+                              <%}%>
+                              </div>
+                            </div>
+                            <hr>
+                            <h3>Property Information:</h3>
+                            <div class="section group">
+                              <div class="col span_1_of_3">
+                              <h5>Room:</h5><p id="showadd"><%= property.bedroom %></p>
+                              </div>
+                              <div class="col span_1_of_3">
+                              <h5>Kitchen:</h5><p id="showadd"><%= property.kitchen %></p>
+                              </div>
+                              <div class="col span_1_of_3">
+                              <h5>Bath:</h5><p id="showadd"><%= property.bathroom %></p>
+                              </div>
+                            </div>
+                            
+                            <hr>
+                            <h3>Location</h3>
+                            <p id="showadd"><%= property.fulladdress %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a type="button" id="mapb" href="#popup1" onclick="init_map(<%= property.latitude %>,<%= property.longitude %>,'<h2><%= property.title %></h2><h3> Property Location</h3>')"><img src="../images/mappin.jpg" width="22" height="32"></a></p>
+                            <hr>
+                            <h3>Discription</h3>
+                            <p id="showdisc"><%= property.discription %></p>
+                            <hr>
+                            <h4>Propery Features</h4>
+                           
+                           <ul id="append"></ul>
+                           <h3>Contact Information:</h3>
+                            <div class="section group">
+                              <div class="col span_1_of_3">
+                              <h5>Primary Contact email:</h5><p id="showadd"><%= property.useremail %></p>
+                              </div>
+                              <div class="col span_1_of_3">
+                              <h5>Contact phone:</h5><p id="showadd"><%= property.phone %></p>
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="section group">
+                              <div class="col span_1_of_3">
+                              <h5>Secondary Contact email:</h5><p id="showadd"><%= property.email %></p>
+                              </div>
+                              <div class="col span_1_of_3">
+                              <h5>Contact Telephone:</h5><p id="showadd"><%= property.telephone %></p>
+                              </div>
+                            </div>
+                           <hr>
+                            <h3>Addvertise Information Type:</h3>
+                            <div class="section group">
+                              <div class="col span_1_of_3">
+                              <h5>Add Type:</h5><p id="showadd"><%= property.addtype %></p>
+                              </div>
+                              <div class="col span_1_of_3">
+                              <h5>Property Type:</h5><p id="showadd"><%= property.propertytype %></p>
+                              </div>
+                            </div>
+                            <hr>
+                            <h3>Share with friends:</h3>
+                            <div class="section group">
+                              <div class="col span_1_of_3">
+                              <p id="facebook">
+                              <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fusa-real-estates.herokuapp.com%2Fdetailedproperty%2F<%= property.timestamp%>&layout=button_count&size=small&mobile_iframe=true&appId=298310910569242&width=69&height=20" width="89" height="30" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                              </p>
+                              </div>
+                              <div class="col span_1_of_3">
+                              
+                              <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script><script type="IN/Share" data-url="https://usa-real-estates.herokuapp.com/detailedproperty/<%= property.timestamp %>" data-counter="right"></script>
+                              </div>
+                            </div>
+                                      
+                           <div id="scrollatbottom"></div>
+                          
+                    </div>
+                    <div id="editproperty">
+                            <input type="text" id="editid" value="<%= property.timestamp %>">
+                            <h2>Title: <input type="text" id="edittitle" value="<%= property.title %>"></h2>
+
+                            <hr>
+                            <h3>Cost & Area: </h3>
+                            <div class="section group">
+                              <div class="col span_1_of_3">
+                              <h6>Price: </h6>
+                              <input type="text" id="editcost" value="<%= property.cost %>">
+                              </div>
+                              <div class="col span_1_of_3">
+                              <h6>Area in SqFt: </h6>
+                              <input type="text" id="editarea" value="<%= property.area %>">
+                              </div>
+                            </div>
+                            <hr>
+                            <h3>Contact Information: </h3>
+                            <div class="section group">
+                              <div class="col span_1_of_3">
+                              <h6>Email: </h6>
+                              <input type="text" id="editemail" value="<%= property.email %>">
+                              </div>
+                              <div class="col span_1_of_3">
+                              <h6>Phone: </h6>
+                              <input type="text" id="editphone" value="<%= property.phone %>">
+                              </div>
+                            </div>
+                            <hr>
+                            <h3>Property Information: </h3>
+                            <div class="section group">
+                              <div class="col span_1_of_3">
+                              <h6>Bedroom: </h6>
+                              <input type="text" id="editbed" value="<%= property.bedroom %>">
+                              </div>
+                              <div class="col span_1_of_3">
+                              <h6>Bath: </h6>
+                              <input type="text" id="editbath" value="<%= property.bathroom %>">
+                              </div>
+                              <h6>Kitchen: </h6>
+                              <div class="col span_1_of_3">
+                              <input type="text" id="editkitchen" value="<%= property.kitchen %>">
+                              </div>
+                            </div>
+
+                            <div class="section group">
+                              <div class="col span_1_of_3">
+                              <h6>Add Type: </h6>
+                              <input type="text" id="edit-a-type" value="<%= property.addtype %>">
+                              </div>
+                              <div class="col span_1_of_3">
+                              <h6>Property Type: </h6>
+                              <input type="text" id="edit-p-type" value="<%= property.propertytype %>">
+                              </div>
+                              <div class="col span_1_of_3">
+                              
+                              </div>
+                            </div>
+                            <hr>
+                            <input type="hidden" id="editlat" value="<%= property.latitude %>">
+                            <input type="hidden" id="editlong" value="<%= property.longitude %>">
+                            <input type="hidden" id="latlng" value="<%= property.longitude %>">
+                            <h3>Google Map:</h3>
+                            <% include partials/googlemap/updatelocation.ejs %>
+                            <h3>Location:</h3>
+                            <input type="text" id="editfulladdress" value="<%= property.fulladdress %>">
+                            <input type="hidden" id="editimage" value="<%= property.image1 %>">
+                            <hr>
+                            <h3>Discription</h3>
+                            <textarea id="editdisc" style="padding: 2%; width: 100%; height: 200px;" rows="4" cols="50"><%= property.discription %></textarea>
+                            <hr>
+                            <h4>Propery Features</h4>
+                            <p><textarea id="editfeatures"><%= property.features %></textarea></p>
+
+                    </div>
+             </div>
+
+              <% if(property.useremail == users.email){%>
+                <div id="updatediv">
+
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <button id="editbutton">EDIT THE PROPERTY?</button>
+                    <button id="savebutton">UPDATE CHANGES</button>
+                    <button id="cancelbutton">CANCEL</button>
+                    <div id="lodardiv"></div>
+                </div>
+              <%}%> 
+                           <!-- Properties social share -->
+             <div class="aa-properties-social">
+               <ul>
+                 <li>Want to Rent this Room?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                 <li></li>
+               </ul>
+               <a href="#scrollatbottom" id="ctnprpbtn">CONTACT PROPERTY</a>
+               <div id="contactdiv">
+               <form action="sendinterestinproperty" method="post">
+               <label>Your Name*</label><br>
+               <input type="text" name="name" id="contactname" placeholder="Enter Name" required><br><br>
+                <label>Your Email Address*</label><br>
+               <input type="text" name="email" id="contactemail" placeholder="Enter Email" required><br><br>
+               <input type="hidden" name="emailofposter" value="<%= property.email %>">
+               <input type="hidden" name="propertyaddress" value="<%= property.staddress %>, <%= property.city %>, <%= property.state %>, <%= property.zip %>">
+               <label>You Can Move in From (Optional)</label><br>
+
+               <input type="date" name="dateodmovein" id="dateofmovein"><br><br>
+               <input type="hidden" name="timestamp" id="timestampdd" value="<%= property.timestamp %>">
+               <label>Description*</label><br>
+               <textarea name="personaldiscription" id="personaldiscription" placeholder="Description" required></textarea><br><br>
+               <input type="submit" id="sendemail" value="Send Email">
+               </form>
+               </div>
+             </div>
+             <!-- Nearby properties -->
+            </div>           
+          </div>
+        </div> 
+        <!-- Start properties sidebar -->
+ <% include partials/propertysidebar.ejs %>
+      </div>
+    </div>
+  </section>
+  <!-- / Properties  -->
+
+  <!-- Footer -->
+  <% include partials/footer.ejs %>
+
+  <!-- / Footer -->
+
+  <!-- jQuery library -->
+  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="../theme/js/jquery.min.js"></script>   
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../theme/js/bootstrap.js"></script>   
+  <!-- slick slider -->
+  <script type="text/javascript" src="../theme/js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="text/javascript" src="../theme/js/nouislider.js"></script>
+  
+  <!-- Custom js -->
+  <script src="../theme/js/custom.js"></script> 
+  <script src="../theme/js/detailedproperty.js"></script> 
+
+ 
+
+
+<div id="popup1" class="overlay">X
+	<div class="popup">
+		<div class="content"><h1>USA REAL ESTATES</h1><h3>by Team 3 Pace University</h3>
+		<a class="close" href="#"> &times;</a>
+		</div>
+			<div id='gmap_canvas' style='height:440px;width:100%;'></div>
+		
+	</div>
+<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+
+<style type="text/css">
+
+</style>
+			</div>
+		</div>
+		 
+<style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+		<script type='text/javascript'>
+function init_map(x,y,z){
+	var myOptions = {center: myCenter,
+		zoom:15,center:new google.maps.LatLng(x,y),mapTypeId: google.maps.MapTypeId.MAP};
+		var myCenter = new google.maps.LatLng(x, y); 
+
+		map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+
+		marker = new google.maps.Marker({position: myCenter, map: map});
+
+		infowindow = new google.maps.InfoWindow({content:z});
+
+		google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
+
+		infowindow.open(map,marker);}
+</script>
+
+ </body>
+</html>

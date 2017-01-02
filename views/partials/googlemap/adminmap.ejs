@@ -1,0 +1,132 @@
+           <style type="text/css">
+              html { height: 100% }
+              body { height: 100%; margin: 0; padding: 0 }
+              #map_canvas { height: 100% }
+            </style>
+            <script type="text/javascript"
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1tbIAqN0XqcgTR1-FxYoVTVq6Is6lD98">
+            </script>
+            <script type="text/javascript">
+ 
+            var locations = [
+              ['loan 1', 33.890542, 151.274856, 'address 1'],
+              ['loan 2', 33.923036, 151.259052, 'address 2'],
+              ['loan 3', 34.028249, 151.157507, 'address 3'],
+              ['loan 4', 33.80010128657071, 151.28747820854187, 'address 4'],
+              ['loan 5', 33.950198, 151.259302, 'address 5']
+              ];
+
+              function initialize() {
+
+                var myOptions = {
+                  center: new google.maps.LatLng(40.708818, -74.010276),
+                  zoom: 18,
+                  mapTypeId: google.maps.MapTypeId.SATELLITE
+
+                };
+                var map = new google.maps.Map(document.getElementById("default"),
+                    myOptions);
+
+                setMarkers(map,locations)
+
+          }
+
+    function setMarkers(map,locations){
+     
+      var marker, i
+      $(".lat").each(function() {
+               
+            var cords = $(this).val().split(' ');
+             var lat = cords[0];
+             var long = cords[1];
+             var cost = cords[2];
+             var image = cords[3];
+             var bedroom = cords[4];
+             var kitchen = cords[5];
+             var bathroom = cords[6];
+             var area = cords[7];
+             var timestamp = cords[8];
+             var d = cords[9];
+             var m = cords[10];
+             var dd = cords[11];
+             var yy = cords[12];
+
+             var cent = new google.maps.LatLng(40.708818, -74.010276);
+
+             latlngset = new google.maps.LatLng(lat, long);
+              var marker = new google.maps.Marker({  
+                icon: 'https://chart.googleapis.com/chart?chst=d_bubble_icon_text_small&chld=dollar|bb|'+cost+'|00C853|E8F5E9',
+                      map: map, title: long , position: latlngset  
+              });
+              map.setCenter(cent)
+
+
+              var content = '<img src="'+image+'" width="150px" >'+
+                            '<p class="cost"><img src="images/dollar.jpg" width="22" height="22">&nbsp;&nbsp;'+cost+'</p>'+
+                            '<p class="room"><img src="images/br.jpg" width="22" height="22"> '+bedroom+' | <img src="images/wr.jpg" width="22" height="22"> '+bathroom+' | <img src="images/area.jpg" width="22" height="22"> '+area+' SqFt</p>'+
+                            '<p class="date"><img src="images/date.jpg" width="22" height="22">&nbsp;&nbsp; '+d+' '+m+' '+dd+' '+yy+' '+'</p>'+
+                            '<p class="link" id="'+timestamp+'">Read more</p>';     
+
+              var infowindow = new google.maps.InfoWindow()
+
+              google.maps.event.addListener(marker,'mouseover', (function(marker,content,infowindow){ 
+                  return function() {
+                    openProperty(timestamp);
+                     infowindow.setContent(content);
+                     infowindow.open(map,marker);
+                  };
+              })(marker,content,infowindow)); 
+
+              google.maps.event.addListener(marker, 'mouseout', function() {
+                infowindow.close(map,marker);
+
+                // setTimeout(function(){   
+                //     infowindow.close(map,marker);
+                //   },2000);              
+              });
+
+              google.maps.event.addListener(marker, 'click', function() {
+                window.location.href = 'https://usa-real-estates.herokuapp.com/detailedproperty/'+timestamp;
+              });
+
+          });
+        }
+        var count = 0;
+        function openProperty(tag){       
+          var id = tag;
+    $.post( "searchproperty", { timestamp: id})
+    .done(function( property ) {    
+        $( "#lodardiv" ).html('<img src="images/load.gif" width=70" height="70">');
+         setTimeout(function(){
+         $(".aa-single-advance-search").show();
+           $( "#lodardiv" ).html('<p class="faa-bounce animated"><i class="fa fa-thumbs-o-up "></i> Searched successful </p>');
+            var staddress = property.fulladdress;  
+            $('#viewimage').attr('src',property.image1);
+            $("#title").text(property.title);
+            $("#address").text(staddress);
+            $("#cost").html('<p id="cost"><img src="images/dollar.jpg" width="22" height="22">&nbsp;&nbsp;'+property.cost+'</p>');
+            $('#roomsdis').html('<br><p class="room"><img src="images/br.jpg" width="22" height="22"> '+property.bedroom+' | <img src="images/wr.jpg" width="22" height="22"> '+property.bathroom+' | <img src="images/area.jpg" width="22" height="22"> '+property.area+' SqFt');
+            $("#description").text(property.discription);
+            $("#readmorelink").html('<a id="readmorelink" href="detailedproperty/'+property.timestamp+'" target="_blank">Read More</a>');
+
+            $("#features").text(property.features);
+
+
+          },2000);
+
+    });
+        }
+
+        </script>
+       </head>
+      <body onload="initialize()">
+    <div id="default" style=" margin-left: 18%; width:80%; height:100%; margin-top: -8cm"></div>
+  </body>
+</html>
+ <% property.forEach(function(property){%>
+
+  <div style="display:none;"><input type="text" class="lat" style="width: 100%;" value="<%= property.latitude %> <%= property.longitude %> <%= property.cost %> <%= property.image1 %> <%= property.bedroom %> <%= property.kitchen %> <%= property.bathroom %> <%= property.area %> <%= property.timestamp %> <%= property.dateField %>">
+  </div>
+            
+  <%}) %>
+       

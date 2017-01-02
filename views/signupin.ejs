@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>REGISTER / LOGIN / RESET PASSWORD</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Collective Forms Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+  <link  rel="stylesheet" type="text/css" media="all" href="/css/signupin/style.css">
+  <link  rel="stylesheet" type="text/css" media="all" href="theme/css/signupin.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,300italic,600italic,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<!--  <form action="file_upload" method="post" enctype="multipart/form-data">
+<input type="file" name="file">
+<input type="submit" value="Submit">
+</form> -->
+<!-- <img src="https://s3.amazonaws.com/shubhambucket123/logo.jpg" width="100" height="100">
+ --><!-- <img src="https://s3.amazonaws.com/shubhamyeolebucket/Capture-1480284562631.PNG" width="100" height="100">  -->
+<div id="fblogindivsec">
+<h1>Login with facebook</h1>
+<br><br><br>
+<div class="section group">
+
+	<div class="col span_1_of_3">
+	<br><br><br><br><br><br>
+	<img src="images/fbgif.gif" alt="Avatar" class="fbgifavtar">
+	</div>
+	<div class="col span_1_of_3">
+	<img src="images/fb.jpg" alt="Avatar" class="avatar">
+	</div>
+	<div class="col span_1_of_3">
+	<form method="POST" action="/loginwithfacebook">
+      <input type="text" name="preurl" class="preurl"><br><br>
+      <input type="text" class="fbinput" name="firstname" id="fb_fname" placeholder="First Name"><br><br>
+      <input type="text" class="fbinput" name="lastname" id="fb_lname" placeholder="Last Name"><br><br>
+      <input type="text" class="fbinput" name="email" id="fb_email" placeholder="Email address"><br><br>
+      <input type="text" class="fbinput" name="phone" id="fb_phone" placeholder="Phone Number"><br><br>
+      <input type="text" class="fbinput" name="gender" id="fb_gender" placeholder="Gender"><br><br>
+      <a id="fblink" href="" target="_blank">Your Facebook timeline</a><br><br>
+      <input type="hidden" class="fbinput" name="website" id="fb_fbprofile" placeholder="Website">
+      <input type="hidden" class="fbinput" name="fbid" id="fb_id" placeholder="Password">
+      <input type="hidden" class="fbinput" name="photo" id="fb_photo" placeholder="Just for reference">
+      <input class="crhad" type="submit" value="Log In with Facebook">
+    </form>
+    	<br><br><br><br><br><br>
+	<br><br><br><br><br><br>
+
+	</div>
+</div>
+	
+	
+</div>
+<div class="main"> 
+<h1>REGISTER / LOGIN / RESET PASSWORD</h1>
+<h1><a href='/'>GO BACK TO HOME</a></h1>
+<h2 id="errmsg" style="color: #006455; font-size: 2em; text-align: center;"><%= errmsg %></h2>
+<h3></h3>
+						<form method="POST" action="adduser" autocomplete="off" enctype="multipart/form-data">
+					    <input type="file" name="file" id="file" style="visibility:hidden;" required="">
+	<div class="wthree_top_forms">
+			<div class="agile-info_w3ls hvr-buzz-out">
+				<h3>Register</h3>
+				<div class="agile-info_w3ls_grid">
+						<img src="images/defaultprofile.jpg" id="image" width="40" height="40"><br><br>
+					    <button id="img">Select Profile Photo</button>"><p id="photoerrmsg"></p><br>
+
+					    <input type="hidden" name="photo" id="photolink">
+					    <input type="hidden" name="timestamp" id="timestamp">
+					    <input type="hidden" name="photoname" id="photoname">
+					    <input type="text" id="fullname" name="firstname" value="" placeholder="Full Name"><br>
+					    <input type="email" id="remail" name="email" placeholder="Email address">
+					    <input type="text" id="rphone" value="" class="halflogintext" name="phone" placeholder="Phone Number"><br><br>
+					    <input type="hidden" class="logintext" name="website" value="" placeholder="Website">
+					    <input type="hidden" name="gender" value="male" placeholder="Gender">
+					    <input type="password" id="psd" name="password" placeholder="Password"><br><br>
+					    <input type="password" id="cpsd" name="confirmpassword" placeholder="Confirm Password">
+					    <input class="crhad" id="regsubmit" style="display:none;" type="submit" value="submit">
+					</form>
+					<br><br>
+ 					  <p class="fakesubmit">Submit</p>
+
+				</div>
+			</div>
+			<div class="agile-info_w3ls agile-info_w3ls_sub hvr-buzz-out">
+				<h3>Login</h3>
+				<div class="agile-info_w3ls_grid second">
+  					<form method="POST" action="/login">
+      				    <input type="hidden" name="preurl" class="preurl"><br><br>
+						<input type="email" placeholder="Enter Username" name="email" required>
+      					<input type="password" placeholder="Enter Password" name="password" required>
+					
+					<div class="agile_remember">
+						<div class="agile_remember_left">
+							<div class="check">
+								<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>remember me</label>
+							</div>
+						</div>
+						<div class="agile_remember_right">
+							<a href="#">Forgot Password?</a>
+						</div>
+						<div class="clear"> </div>
+					</div>
+						<input type="submit" value="Sign In">
+					</form>
+					<h4>Continue With</h4>
+					<div class="social_icons agileinfo">
+					   <section class="social">    
+					   <% include partials/fboauth %>
+					   <br><br><p style="font-size: 23px; color: white">Login with Facebook</p>
+						</section>
+					</div>
+					<h5>Don't have an account? <a href="#">Sign Up</a></h5>
+				</div>
+			</div>
+			<div class="agile-info_w3ls third hvr-buzz-out">
+				<h3>Reset Password</h3>
+				<div class="agile-info_w3ls_grid third">
+								<h1>Reset Password</h1>
+
+					<form action="/resetpassword" method="post">
+						<input type="email" name="email" placeholder="Enter email address" required=" ">
+						
+						<p class="asd"><a href="#">Great passwords</a> use upper and lower case
+							characters, numbers and symbols like "!@#$*.</p>
+						<input type="submit" value="RESET">
+					</form>
+					<h5 class="rest">Already a member? <a href="#">Sign In</a></h5><br><br>
+				</div>
+			</div>
+			<div class="clear"> </div>
+		</div>
+
+    <script type="text/javascript" src="theme/js/signupin.js"></script>
+
+		<div class="agileits_copyright">
+			<p>© 2016 Collective Forms Widget. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+		</div>
+	</div>
+	
+</body>
+</html>

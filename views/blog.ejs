@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<html>
+<title>Shubham Java and NodeJS Blog</title>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+<link rel="stylesheet" type="text/css" href="/css/datatable.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <!-- ****************************************High Lighter PLUGINs**************************************** -->
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+
+  <!-- ****************************************Google PLUGINs**************************************** -->
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+ <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAWPMDGHGh-KUNMkjSIlMBD1JMtTfbxk&callback=initMap"></script>
+
+  <!-- ****************************************My PLUGINs**************************************** -->
+  <link rel="stylesheet" type="text/css" href="/css/fullblog.css">
+
+  <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+
+</script>
+</script>
+<script>
+
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../../css/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- w3-content defines a container for fixed size centered content,
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+
+<% include partials/header.ejs %>
+  <script src="../js/blog.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/blog.css">
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12" >
+  <!-- Blog entry -->
+  
+
+  <hr>
+
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white" style="padding: 2%">
+  <h1>Welcome to Shubham Blog!</h1>
+  <% if(session=='false'){%>
+   <h3>File Upload:</h3>
+        Select a file to upload: <br />
+        <form action="/file_upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="filename" size="50" />
+            <br />
+            <input type="submit" value="Upload File" />
+        </form>
+
+
+      <p style="color: red">
+        Please Sign In or Sign Up to write new posts.<br><br>
+        <span class="errmsg">Use login with facebook for quick login.</span>
+      </p>
+<br><br><br>
+
+      <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="loginButton">Sign Up / Sign In / Login with Facebook</a>
+      <br><br><br>
+  <%}else{%>
+
+     <h5>What you would like to post today?</h5>
+
+    
+ <button style="float: right;" id="submit">Save Post</button>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
+</head>
+<body>
+</div>
+
+<div id="accordion">
+  <h3>Section 1</h3>
+  <div>
+    <p>
+   
+    </p>
+  </div>
+  <h3>Section 2</h3>
+  <div>
+    <p>
+      
+
+    </p>
+  </div>
+  <h3>Section 3</h3>
+  <div>
+    <p>
+
+    </p>
+  </div>
+  <h3>Section 4</h3>
+  <div><p>
+  
+    </p></div>
+    <h3>Section 4</h3>
+  <div><p>
+  
+    </p></div>
+
+</div>
+
+      <input type="text" name="filepath" id="filepath" placeholder="filepath"><br><br>
+      <div id="disp_tmp_path"></div>
+
+    <form method="post" action="postproperty">
+      <input type="file" name="file" size="50" /><br><br>
+
+      <input type="text" name="phone" placeholder="Phone"><br><br>
+      <input type="number" name="email" placeholder="Email"><br><br>
+      <input type="number" name="telephone" placeholder="Telephone"><br><br>
+
+
+      <input type="text" name="staddress" placeholder="Street Address"><br><br>
+      <input type="text" name="city" placeholder=" city"><br><br>
+      <input type="text" name="state" placeholder=" state"><br><br>
+      <input type="text" name="zip" placeholder=" zip"><br><br>
+      <input type="text" name="county" placeholder=" county"><br><br>
+      <input type="text" name="country" placeholder=" country"><br><br>
+
+      <input type="number" name="bedroom" placeholder="Bedroom"><br><br>
+      <input type="number" name="kitchen" placeholder="Kitchen"><br><br>
+      <input type="number" name="bathroom" placeholder="Bathroom"><br><br>
+
+
+      <select id="propertytype">
+        <option value="other">Select Category under which this post should come</option>
+        <option value="houses">Houses</option>
+        <option value="appartments">Appartment</option>
+        <option value="shop">Shop</option>
+        <option value="payingguest">Paying Guest</option>
+        <option value="townhome">Town Home</option>
+        <option value="farmhouse">Farm House</option>
+      </select><br><br>
+      <input type="text" name="propertytype" placeholder="propertytype"><br><br>
+      <input type="text" name="area" placeholder="Area in sq feets"><br><br>
+
+      <input type="submit" value="Post Add">
+    </form>
+
+
+
+
+
+
+
+
+
+
+<form method="post" action="addblog">
+    <input type="text" name="title" id="title" class="titleInp" placeholder=" Please enter title of what this post is about...!"><br><br>
+    <input type="hidden" name="category" id="categoryinp" value="other" placeholder="category">
+      <select id="category">
+        <option value="other">Select Category under which this post should come</option>
+        <option value="Java">Java</option>
+        <option value="NodeJs">NodeJs</option>
+        <option value="JavaScript_Scripting_Language">JavaScript</option>
+        <option value="jQuery">jQuery</option>
+        <option value="AngularJS">AngularJS</option>
+        <option value="AJAX">AJAX</option>
+        <option value="MongoDB_Database">MongoDB</option>
+        <option value="MySQL">MySQL</option>
+        <option value="Hibernate">Hibernate</option>
+        <option value="Spring">Spring(MVC)</option>
+      </select>
+    <input type="hidden" name="like" id="like" VALUE="0">
+    <input type="hidden" name="dislike" id="dislike" VALUE="0">
+    <input type="hidden" name="views" id="views" VALUE="0">
+    <input type="text" name="tags" id="tags" VALUE="">
+    <input type="hidden" name="long" id="long" VALUE="">
+    <input type="hidden" name="lat" id="lat" VALUE="">
+    <textarea style="display:none;" rows="4" cols="43" name="blogdata" id="blogdata" ></textarea>
+    <input type="submit"  style="display:none;" id="saveblog" value="Save Blog">
+    </form>
+    <textarea rows="13"  style="display:none;" cols="43" id="final" class="final"></textarea>
+  <br><br><button class="add_field_button">Add More Fields</button><br><br><br>
+     <div id="scrollable">
+
+<div class="input_fields_wrap">
+    <div class="section group">
+      <div class="col span_1_of_2">
+        <textarea rows="4" cols="33" id="cont0" class="cont" placeholder="Section Description"></textarea>
+      </div>
+      <div class="col span_1_of_2">
+        <textarea rows="4" cols="13" id="code0" class="code" placeholder="Section Code"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="previewSample">
+<h1 id="lookslikemsg">Your blog will look like this</h1><input type="text" id="addtags" VALUE=""><button id="addtagbutton">Add</button>
+<h2 id="showtitle"></h2>
+<h2 id="showcategory"></h2>
+<p id="showtags"></p>
+ 
+
+    <div id="sample"></div>
+    <p id="p-id-0" class="blogContent"></p>
+    <pre id="pre-id-0" class="blogCodeContent"><code class="javascript" id="code-id-0"></code></pre>
+    <div id="preview">
+    
+  </div>
+  </div></h2>
+<%}%>
+  </div>
+
+<!-- END BLOG ENTRIES -->
+</div>
+<script type="text/javascript">
+  
+  $(document).on("click",".w3-padding-16",function() { 
+      var id = $(this).attr('id');
+    alert(id);
+    window.location = "http://localhost:3000/dashboard/"+id;
+});
+
+</script>
+  
+    <% include partials/tiles/rightsidedown.html %>
+<!-- Footer -->
+
+<div id="popup1" class="overlay">X
+  <div class="popup">
+    <div class="content"><h1>Java & NodeJS blog</h1><h3>by Shubham Yeole</h3>
+    <a class="close" href="#"> &times;</a>
+    </div>
+      <div id='gmap_canvas' style='height:440px;width:100%;'></div>
+    
+  </div>
+<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+
+<style type="text/css">
+
+</style>
+      </div>
+    </div>
+    
+</div>
+
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+ <center><p style="font-size: 2em; font-weight: bold; color: #cecece">
+ &copy; 2016 java-nodejs-blog.herokuapp.com. All Rights Reserved.
+ </p>
+ <p>Developed by: Shubham Yeole</p>
+ <p>+(201) 887-5323</p>
+ <p>10 Front street,</p>
+ <p>Jersey City</p>
+ <p>07302 NJ</p>
+ <p>USA</p>
+
+ </center>
+</footer>
+
+</body>
+</html>
+

@@ -1,0 +1,34 @@
+.cost{color: #3d226d; font-weight: bold; font-size: 2em;}
+.room{color: #3d226d; font-size: 1.5em; margin-top: -20px;}
+.date{color: #3d226d; font-size: 1.5em; margin-top: -10px;}
+.add{}
+.link{color: #2196F3; font-size: 1.5em; margin-top: -10px;}
+.link:hover{color: #3F51B5; cursor: pointer;}
+#viewimage{height: 190px; width: 310px}
+#title{background-color: #0091EA; padding: 2%; font-size: 1.5em; color: white}
+#cost{color: #3F51B5; font-weight: bold;}
+#address{color: #F44336; font-size: 20px;} 
+#description{ padding: 2%; background-color: #FFFDE7;  }
+#features{}
+
+#readmorelink {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 6px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+     background-color: white;
+    color: black;
+    border: 2px solid #3B2F63;
+}
+#readmorelink {
+    background-color: #3B2F63;
+    color: white;
+}

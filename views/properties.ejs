@@ -1,0 +1,146 @@
+<% include partials/header1.ejs %>
+<link href="../theme/css/properties.css" rel="stylesheet">    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="../theme/js/properties.js"></script>
+
+
+  <!-- Start Proerty header  -->
+
+  <section id="aa-property-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-property-header-inner">
+            <h2>Properties Page</h2>
+            <ol class="breadcrumb">
+            <li><a href="/">HOME</a></li>            
+            <li class="/properties/0">PROPERTIES</li>
+          </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <!-- End Proerty header  -->
+
+  <!-- Start Properties  -->
+  <section id="aa-properties">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="aa-properties-content">
+            <!-- start properties content head -->
+            <div class="aa-properties-content-head pagenote">              
+              <div class="aa-properties-content-head-left">
+               <%= status %>
+              </div>
+              <div class="aa-properties-content-head-right">
+                Page Number: <span class="noclass"><%= pageno %></span><input type="hidden" value="<%= pageno %>" id="pagenohidden">
+              </div> 
+            </div>
+            <div class="aa-properties-content-head">              
+              <div class="aa-properties-content-head-left">
+                <div class="shubhampagination">
+                  <ul class="pagination1"></ul>
+                </div>
+              </div>
+              <div class="aa-properties-content-head-right">
+                <a id="aa-grid-properties" href="#"><span class="fa fa-th"></span></a>
+                <a id="aa-list-properties" href="#"><span class="fa fa-list"></span></a>
+              </div> 
+            </div>  
+            <!-- Start properties content body -->
+            <div class="aa-properties-content-body">
+                        
+
+              <ul class="aa-properties-nav">
+              <input type="hidden" id="count" value="<%= count %>">
+         <% property.forEach(function(property){%>
+                <li>
+                  <article class="aa-properties-item">
+                    <a class="aa-properties-item-img" href="#">
+                      <img alt="img" src="<%= property.image1 %>" width="370" height="220">
+                    </a>
+                    <div class="aa-tag for-rent">
+                      <%= property.addtype %>
+                    </div>
+                    <div class="aa-properties-item-content">
+                      <div class="aa-properties-info">
+                        <span><%= property.bedroom %> Rooms</span>
+                        <span><%= property.kitchen %> Beds</span>
+                        <span><%= property.bathroom %> Baths</span>
+                        <span><%= property.area %> SQ FT</span>
+                      </div>
+                      <div class="aa-properties-about">
+                        <h3 class="title"><%= property.title %></h3>
+                        <p class="description"><%= property.discription %>...</p>                      
+                      </div>
+                      <div class="aa-properties-detial">
+                        <span class="aa-price">
+                          $<%= property.cost %>
+                        </span>
+                        <a class="aa-secondary-btn" href="/detailedproperty/<%= property.timestamp %>" target="_blank">View Details</a>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+            <%}) %>
+              
+              </ul>
+            </div>
+            <!-- Start properties content bottom -->
+            <div class="aa-properties-content-bottom">
+              <nav>
+            <div class="aa-properties-content-head pagenote">              
+              <div class="aa-properties-content-head-left">
+               <%= status %>
+              </div>
+              <div class="aa-properties-content-head-right">
+                Page Number: <%= pageno %><input type="hidden" value="<%= pageno %>" id="pagenohidden">
+              </div> 
+            </div>
+            <div class="aa-properties-content-head">              
+              <div class="aa-properties-content-head-left">
+                <div class="shubhampagination">
+                  <ul class="pagination1"></ul>
+                </div>
+              </div>
+              <div class="aa-properties-content-head-right">
+                <a id="aa-grid-properties" href="/"><span class="fa fa-home"></span></a>
+              </div> 
+            </div>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <!-- Start properties sidebar -->
+         <% include partials/propertysidebar.ejs %>
+ 
+      </div>
+    </div>
+  </section>
+  <!-- / Properties  -->
+
+  <!-- Footer -->
+<% include partials/footer.ejs %>
+  <!-- / Footer -->
+
+
+  <!-- jQuery library -->
+  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="../theme/js/jquery.min.js"></script>   
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../theme/js/bootstrap.js"></script>   
+  <!-- slick slider -->
+  <script type="text/javascript" src="../theme/js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="../text/javascript" src="theme/js/nouislider.js"></script>
+  
+  <!-- Custom js -->
+  <script src="../theme/js/custom.js"></script> 
+
+
+
+  </body>
+</html>

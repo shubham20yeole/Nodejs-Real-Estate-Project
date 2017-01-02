@@ -1,0 +1,28 @@
+#addpadding{
+	padding: 3%;
+}
+body{
+	background-color: white;
+}
+.currentusers table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.currentusers th{
+	padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+   	font-family: 'Rokkitt', serif;
+    font-size: 1.5em;
+}
+.currentusers td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+	font-family: 'Rokkitt', serif;
+	font-size: 1.2em;
+
+}
+
+.currentusers tr:hover{background-color:#f5f5f5}

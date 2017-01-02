@@ -1,0 +1,98 @@
+<script>
+
+var at = null;
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '220733985045832',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+
+     var js, fjs = d.getElementsByTagName(s)[0];
+
+     if (d.getElementById(id)) {return;}
+
+     js = d.createElement(s); js.id = id;
+
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+
+     fjs.parentNode.insertBefore(js, fjs);
+
+   }(document, 'script', 'facebook-jssdk'));
+
+   FB.getLoginStatus(function(response) {
+
+   if (response.status === 'connected') {
+    alert(response.authResponse.accessToken);
+  }
+
+});
+
+function checkLoginState() {
+  FB.login(function(response) {
+    if (response.authResponse) {
+     // alert('Welcome!  Fetching your information.... ');
+     FB.api('/me', function(response) {
+       // alert('Good to see you, ' + response.name + '. '+response.email);
+     });
+    } else {
+     // alert('User cancelled login or did not fully authorize.');
+    }
+});
+  FB.getLoginStatus(function(response) {
+
+   if (response.status === 'connected') {
+    // alert("This is accessToken from facebook API: "+response.authResponse.accessToken);
+    at = response.authResponse.accessToken;
+  }
+  FB.api('/me', { locale: 'en_US', fields: 'name, first_name, last_name, link, email, about, birthday, context, hometown, quotes, relationship_status, religion, gender' },function(response) {
+      $(".main").hide();
+      $("#fblogindivsec").show();
+
+    var title = "Mr";
+      if(response.gender=="male") title = "Mr. ";
+      else title = "Miss. ";
+      
+      var greetingMsg = "Welcome "+title+" "+ response.name+"....";
+      $("#fb_fname").val(response.first_name);
+      $("#fb_lname").val(response.last_name);
+      $("#fb_email").val(response.email);
+      $("#fb_phone").val("(###) ###-####");
+      $("#fb_fbprofile").val(response.link);
+      $("#fb_id").val(response.id);
+      $("#fb_photo").val('https://graph.facebook.com/'+response.id+'/picture?width=930&type=large&access_token='+at);
+      $("#fb_gender").val(response.gender);
+      $("#fblink").attr('href', response.link);
+      $("#registerdiv").hide();
+      $("#logindiv").hide();
+      $("#fbreglog").show();
+      $("#fbreglog").addClass( "animated bounceInRight" );
+      $("#fbmsg").text(greetingMsg);
+//https://graph.facebook.com/'+response.id+'/picture?width=930&type=large&access_token='+at
+          $("#test").val('https://graph.facebook.com/'+response.id+'/picture?width=930&type=large&access_token='+at);
+    $('.avatar').attr('src','https://graph.facebook.com/'+response.id+'/picture?width=930&type=large&access_token='+at);
+
+      alert(fname+","+lname+", "+email+", "+timeline+", "+picture+", "+gender);
+      
+  		$("#test").val(picture);
+
+	JSON.stringify(response);
+});
+FB.logout(function(response) {
+   // Person is now logged out
+});
+
+  });
+
+}
+</script>
+
+<fb:login-button data-size="xlarge"
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
+
+

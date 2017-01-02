@@ -1,0 +1,87 @@
+#notification_li
+{
+}
+#notificationContainer 
+{
+background-color: #fff;
+border: 4px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 60px;
+margin-left: -330px;
+width: 400px;
+z-index: -1;
+display: none; // Enable this after jquery implementation 
+}
+/*// Popup Arrow
+*/#notificationContainer:before {
+content: '';
+display: block;
+position: absolute;
+width: 20px;
+height: 20px;
+color: black;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 350px;
+}
+#notificationTitle
+{
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #ffffff;
+z-index: 1000;
+width: 384px;
+border-bottom: 1px solid #dddddd;
+}
+#notificationsBody
+{
+padding: 33px 0px 0px 0px !important;
+min-height:300px;
+}
+#notificationFooter
+{
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+#notification_count 
+{
+background-image: url("http://www.nexcius.net/wp-content/uploads/2013/05/notification_512.png");
+background-size: 40px;
+background-repeat: no-repeat;
+padding: 7px 0px 7px 17px;
+color: #ffffff;
+font-weight: bold;
+border-radius: 50%;
+width: 170px;
+-moz-border-radius: 9px; 
+-webkit-border-radius: 9px;
+position: absolute;
+margin-top: -11px;
+}
+.clicleimg{border-radius: 50%;}
+a:hover{cursor: pointer;}
+.notificationstable tr{ background-color: #f9f9fb; color: #3b5998; }
+.heading{font-weight: bold;}
+    ::-webkit-scrollbar {
+    width: 0.6em;
+    height: 0em
+}
+::-webkit-scrollbar-button {
+    background: #ccc
+}
+::-webkit-scrollbar-track-piece {
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #84b3c7
+
+}

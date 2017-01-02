@@ -1,0 +1,103 @@
+<% include partials/header1.ejs %>
+<!-- <link href="theme/css/postadd.css" rel="stylesheet">  
+ -->  <!-- Start Proerty header  -->
+
+  <section id="aa-property-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-property-header-inner">
+            <h2>Contact</h2>
+            <ol class="breadcrumb">
+            <li><a href="#">HOME</a></li>            
+            <li class="active">Contact</li>
+          </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <!-- End Proerty header  -->
+
+ <section id="aa-contact">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+          <a href="#emailmenow" id="emailmelink"><h2>CLICK HERE TO EMAIL ME...!</h2></a><br><br>
+
+          <div class="aa-contact-area">
+            <div class="aa-contact-top">
+              <div class="aa-contact-top-left">
+                 <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDMAWPMDGHGh-KUNMkjSIlMBD1JMtTfbxk'></script><div style='overflow:hidden;height:450px;width:100%;'><div id='gmap_canvas' style='height:450px;width:100%;'></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div> <a href='https://www.embed-map.net/'>how to embed google maps</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=71fef30c8a4d4e0bdefae73105644cca73560661'></script><script type='text/javascript'>function init_map(){var myOptions = {zoom:15,center:new google.maps.LatLng(40.726425,-74.06105509999998),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(40.726425,-74.06105509999998)});infowindow = new google.maps.InfoWindow({content:'<strong>FULL STACK DEVELOPER</strong><br>10 Front street<br>07032 Jersey City<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+              </div>
+              <div class="aa-contact-top-right">
+                <p>  My name is Shubham Yeole, a Computer Science Graduate Student, developer of this web application. I am a full stack developer with a proven ability to develop high-performance applications? If you are looking for a FullStack/Backend/Frontend developer, please review my resume.
+                </p><a href="http://shubhamyeole.byethost8.com/public_html/career/ShubhamYeoleResume.pdf" target="_blank"><img src="images/resume.jpg" width="150" height="30"></a>.
+
+                
+                <ul class="contact-info-list">
+                  <li> <i class="fa fa-phone"></i> 1-201-887-5323</li>
+                  <li> <i class="fa fa-envelope-o"></i> shubhamyeole.cs / shubham20.yeole@gmail.com</li>
+                  <li> <i class="fa fa-map-marker"></i> Front Street, Jersey City, NJ 07302, USA</li>
+                  <li> <i class="fa fa-map-marker"></i> Parkside, Dr Fremont, CA 94536, USA</li>
+                </ul>
+              </div>
+            </div>
+            <div class="aa-contact-bottom">
+              <div class="aa-title" id="emailmenow">
+                <h2>Send Your Message</h2>
+                <span></span>
+                <p>Your email address will not be published. Required fields are marked <strong class="required">*</strong></p>
+              </div>
+              <div class="aa-contact-form">
+                <form class="contactform" action="contactme" method="post">                  
+                  <p class="comment-form-author">
+                    <label for="author">Name <span class="required">*</span></label>
+                    <input type="text" name="name" value="" size="30" required="required">
+                  </p>
+                  <p class="comment-form-email">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" name="email" value="" aria-required="true" required="required">
+                  </p>
+                  <p class="comment-form-url">
+                    <label for="subject">Subject</label>
+                    <input type="text" name="subject">  
+                  </p>
+                  <p class="comment-form-comment">
+                    <label for="comment">Message</label>
+                    <textarea name="comment" cols="45" rows="8" aria-required="true" required="required"></textarea>
+                  </p>                
+                  <p class="form-submit">
+                    <input type="submit" name="submit" class="aa-browse-btn" value="Send Message">
+                  </p>        
+                </form>
+              </div>
+            </div>
+          </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ 
+
+
+
+  <% include partials/footer.ejs %>
+
+
+  <!-- jQuery library -->
+  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="theme/js/jquery.min.js"></script>   
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="theme/js/bootstrap.js"></script>   
+  <!-- slick slider -->
+  <script type="text/javascript" src="theme/js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="text/javascript" src="theme/js/nouislider.js"></script>
+  
+  <!-- Custom js -->
+  <script src="theme/js/custom.js"></script> 
+
+
+  </body>
+</html>

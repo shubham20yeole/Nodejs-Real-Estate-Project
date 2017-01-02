@@ -1,0 +1,40 @@
+.abtmesec {
+    width: 100%;
+    height:600px;
+    margin: auto;
+    padding: 10px;
+}
+div#abtmeimage {
+    width: 25%;
+    height:400px;
+    float: left;
+    text-align: center;
+}
+div#abtmecnt {
+    width: 50%;
+    margin-left: 15%;
+    height: 600px;
+    padding-left: 3%;
+    overflow:scroll; 
+     float: right;
+    text-align: left;
+}
+.message{
+    color: #D50000;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 2em;
+}
+.buttoneffect{  position: relative;
+    background-color: #D50000;
+    font-family: 'Fjalla One', sans-serif;
+    border: none;
+    font-size: 1em;
+    color: #FFCDD2;
+    padding: 1%;
+    width: 300px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer; }

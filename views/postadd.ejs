@@ -1,0 +1,162 @@
+<% include partials/header1.ejs %>
+<link href="theme/css/postadd.css" rel="stylesheet">    
+  <!-- Start Proerty header  -->
+  <section id="aa-property-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-property-header-inner">
+            <h2>Properties Details</h2>
+            <ol class="breadcrumb">
+            <li><a href="#">HOME</a></li>            
+            <li class="active">APPARTMENT TITLE</li>
+          </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <!-- End Proerty header  -->
+  
+
+  <!-- Start Properties  -->
+  <section id="aa-properties">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-8">
+          <div class="aa-properties-content" id="postform">            
+            <!-- Start properties content body -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="aa-properties-details" >
+            <h3>POST NEW PROPERTY</h3>
+          <% if(users.fullname == 'Anonymous'){%>
+             <h1>Welcome to SHUBHAM GREAT LIVINGS...!</h1>
+              <p style="color: red">
+              Please Sign In or Sign Up to post adds.<br><br>
+                <span id="fbloginmsg">Use login with facebook for quick login.</span>
+              </p>
+              <br><br>
+              <a href="registerlogin" style="width:auto;" class="loginButton">Sign Up / Sign In / Login with Facebook</a>
+              <br><br>
+              <%}else{%> 
+               
+             
+
+           <form method="post" action="postproperty" enctype="multipart/form-data">
+                 <br><br><lable>1. PROPERTY IMAGES...</lable><br><br>
+                  <button class="add_field_button1">Add More Images</button><br><br>
+                 
+                    <div class="input_fields_wrap1">
+                    <div>
+                      <input type="file" name="file" id="f_1" class="f">
+                      <input type="hidden" name="filename" id="n_1" class="n">
+                      <input type="hidden" name="filelinks" id="l_1" class="l">
+                      <img src="http://i.imgur.com/8LaeZcN.png" id="i_1" class="i" width="32" height="32">
+                      <br>
+                    </div>
+                </div>
+                <hr>
+                <fieldset>
+                <lable>2. TITLE...</lable><br><br>
+                <input type="text" name="title" id="title"  placeholder="Title" required="true"><hr>
+                <input type="text" name="timestamp" id="timestamp" placeholder="timestamp">
+                <input type="hidden" id="image1" name="image1">
+                <lable>3. CONTACT INFORMATION...</lable><br><br>
+                <input type="text" name="phone" id="phone" value="2018875323" placeholder="Phone">
+                <input type="text" name="email" id="email" value="shubham20.yeole@gmail.com" placeholder="Email">
+                <input type="text" name="telephone" value="07172222931"  placeholder="Telephone"><hr>
+                <input type="hidden" name="latitude" id="latitude" placeholder="latitude" readonly="true">
+                <input type="hidden" name="longitude" id="longitude" placeholder="longitude" readonly="true">
+                <div id="floating-panel" style="display:none;">
+                  <input id="latlng" type="text" value="40.714224,-73.961452">
+                  <input id="submit" type="button" value="Reverse Geocode">
+                </div>
+                <% include partials/map.ejs %>
+                <div id="longlatidiv"><p id="longlati"></p></div>
+                <lable>4. PROPERTY LOCATION?</lable><br><br>
+                <input type="text" name="staddress"  id="staddress" placeholder="Street Address">
+                <input type="text" name="city"  id="city" placeholder=" city">
+                <input type="text" name="state"  id="state" placeholder=" state">
+                <input type="text" name="zip"  id="zip" placeholder=" zip">
+                <input type="text" name="county" id="county" placeholder=" county">
+                <input type="text" name="country"  id="country" placeholder=" country"><hr>
+                <lable>5. PROPERTY TYPE...</lable><br><br>
+                <select id="categoryselect">
+                  <option value="Other">Category</option>
+                  <option value="Houses">Houses</option>
+                  <option value="Appartments">Appartment</option>
+                  <option value="Shop">Shop</option>
+                  <option value="Paying Guest">Paying Guest</option>
+                  <option value="Town Home">Town Home</option>
+                  <option value="Farm House">Farm House</option>
+                </select>
+                <select id="addselect">
+                  <option value="Sale">Type</option>
+                  <option value="Sale">For Sale</option>
+                  <option value="Rent">For Rent</option>
+                </select><hr>
+                
+                <lable>6. PROPERTY FEATURES...</lable><br><br>
+                <div class="input_fields_wrap">
+                  <button class="add_field_button">Add More Fields</button><br><br>
+                  <div><input type="text" name="propertyfeatures"  placeholder="Property Feature"></div>
+                </div><br><br>
+
+                <lable>7. ROOM / KITCHEN / WASHROOM...</lable><br><br>
+                <input type="text" name="bedroom" value="4" id="bedroom" placeholder="Bedroom">
+                <input type="text" name="kitchen" value="2" id="kitchen" placeholder="Kitchen">
+                <input type="text" name="bathroom" value="1" id="bathroom" placeholder="Bathroom"><hr>
+                <input type="hidden" name="propertytype" value="Appartment" id="propertytype" placeholder="propertytype">
+                <input type="hidden" name="addtype" value="Rent" id="addtype" placeholder="propertytype">
+                <lable>8. AREA / PRICE / DESCRIPTION...</lable><br><br>
+                <input type="text" name="area" value="3422" id="area" placeholder="Area in sq feets">
+                <input type="text" name="cost"  id="cost" placeholder="Price in USD">
+                <input type="text" name="discription" value="Spacious layout 1 bed room 1 bathroom apartment on the Hudson River water front Modern kitchen with granite and stainless steel Open layout with ample closet space Gorgeous New York city skyline view from living room and the bedroom Prewiring for telephone, cable/satellite TV, Wi-Fi, and Verizon FiOS 24 hour doorman and concierge Laundry on the floor Fabulous Amenities in the community 2 min walk to the Newport PATH & light rail station 5-7 min walk to Hoboken PATH, NJ Transit, Light rail and Bus Stand 2 min to Morton Williams 4 blocks to BJs and Shoprite Few minutes to New York City Onsite paid parking available Onsite paid additional storage available" id="discription"   placeholder="Discription"><hr>
+                </fieldset>
+                <input type="submit" id="submitForm" value="Actual Post Add">
+              </form>
+              <input type="submit" value="Save Post" id="uploadimage"><div id="loader"></div>
+              <div id="showerror"></div>
+              <div id="lodardiv"></div>
+              <div id="div1" style="display:none;">Upload image 1: <b>Successfull</b></div>
+              <div id="div2" style="display:none;">Upload image 2: <b>Successfull</b></div>
+              <div id="div3" style="display:none;">Upload image 3: <b>Successfull</b></div>
+              <div id="div4" style="display:none;">Upload image 4: <b>Successfull</b></div>
+              <div id="div5" style="display:none;">Submitting - Property : <b>DONE</b></div><br>
+               <%}%> 
+            </div>          
+          </div>
+        </div>
+        <!-- Start properties sidebar -->
+       <% include partials/propertysidebar.ejs %>
+
+      </div>
+    </div>
+  </section>
+  <!-- / Properties  -->
+
+  <!-- Footer -->
+  <% include partials/footer.ejs %>
+
+  <!-- / Footer -->
+
+<!-- jQuery library -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="theme/js/jquery.min.js"></script>   
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="theme/js/bootstrap.js"></script>   
+  <!-- slick slider -->
+  <script type="text/javascript" src="theme/js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="text/javascript" src="theme/js/nouislider.js"></script>
+  
+  <!-- Custom js -->
+  <script src="theme/js/custom.js"></script> 
+    <script type="text/javascript" src="theme/js/postadd.js"></script>
+
+
+  </body>
+</html>

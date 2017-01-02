@@ -1,0 +1,40 @@
+body{    background-image: url('https://getflywheel.com/wp-content/uploads/2015/10/paypal-donate-button-large-1100x500.png');
+background-repeat: no-repeat;
+background-size: 110%;
+}
+#outdiv{ padding: 1%; background-color: white; width: 700px; margin: auto; margin-top: 3cm;
+		border: 6px solid #F2AB27;
+		opacity: 0.9;}
+#indiv{ padding: 3% }
+td{text-align: center;}
+select{
+	width: 330px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('https://cdn0.iconfinder.com/data/icons/bicon/24/circle_checkmark_complete_finish_select_done-256.png');
+    background-size: 30px 30px;
+    background-position: 0px 8px;
+    background-repeat: no-repeat;
+    padding: 15px 10px 15px 30px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+input[type='text']{
+	width: 330px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('http://www.iconsplace.com/icons/preview/black/message-256.png');
+    background-size: 30px 30px;
+    background-position: 0px 8px;
+    background-repeat: no-repeat;
+    padding: 15px 10px 15px 30px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+#PayPalButton{ width: 300px}

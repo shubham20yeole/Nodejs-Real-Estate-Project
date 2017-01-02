@@ -1,0 +1,36 @@
+<% include interview/header.ejs %>
+<% include interview/footer.ejs %>
+<link rel="stylesheet" type="text/css" href="interview/css/alltimetable.css"> 
+<link rel="stylesheet" type="text/css" href="interview/css/circle.css"> 
+  <script src="interview/js/alltimetable.js"></script> 
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <h1>ALL TIME TABLE</h1>
+                <% timetable.forEach(function(timetable){%>
+                  <div class="aa-top-slider-single">
+                    <!-- Top slider content -->
+                    <div class="aa-top-slider-content">
+                      <h2 class="aa-top-slider-title"><%= timetable.timetablename %></h2>
+                      
+                      
+                      <a href="/managecategories/<%= timetable.timestamp %>" class="aa-top-slider-btn">MANAGE TIMETABLE<span class="fa fa-angle-double-right"></span></a>
+                      <div style="float: right; margin-top: -60px">
+                      <div class="c100 p<%= timetable.percent %> small">
+                        <span><%= timetable.percent %>%</span>
+                        <div class="slice">
+                          <div class="bar"></div>
+                          <div class="fill"></div>
+                        </div>
+                      </div>
+                      </div>
+
+                    </div>
+                </div>
+                <%}) %>
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>

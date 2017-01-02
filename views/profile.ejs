@@ -1,0 +1,307 @@
+<% include partials/header1.ejs %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../theme/css/profile.css"> 
+<script src="../theme/js/profile.js"></script> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  
+  <!-- Start Proerty header  -->
+
+  <section id="aa-property-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-property-header-inner">
+            <h2>PROFILE PAGE:</h2>
+            <ol class="breadcrumb">
+            <li><a href="/">HOME</a></li>            
+            <li><a href="/properties/0">PROPERTIES</a></li>
+          </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <!-- End Proerty header  -->
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../theme/css/w3.css">
+<link rel="stylesheet" href="../theme/css/w3color.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+</style>
+<body class="w3-theme-l5">
+
+<!-- Navbar -->
+<div id="navDemo">
+ <ul class="w3-navbar w3-theme-d2 w3-left-align w3-large">
+  <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+    <a class="w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  </li>
+  <li><a href="#" class="w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Logo</a></li>
+  <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a></li>
+  <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a></li>
+  <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a></li>
+  <li class="w3-hide-small w3-dropdown-hover">
+    <a href="#" class="w3-padding-large w3-hover-white" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></a>     
+    <div class="w3-dropdown-content w3-white w3-card-4">
+      <a href="#">One new friend request</a>
+      <a href="#">John Doe posted on your wall</a>
+      <a href="#">Jane likes your post</a>
+    </div>
+  </li>
+  <li class="w3-hide-small w3-right"><a href="#" class="w3-padding-large w3-hover-white" title="My Account"><img src="/w3images/avatar2.png" class="w3-circle" style="height:25px;width:25px" alt="Avatar"></a></li>
+ </ul>
+</div>
+
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:51px">
+  <ul class="w3-navbar w3-left-align w3-large w3-theme">
+    <li><a class="w3-padding-large" href="#">Link 1</a></li>
+    <li><a class="w3-padding-large" href="#">Link 2</a></li>
+    <li><a class="w3-padding-large" href="#">Link 3</a></li>
+    <li><a class="w3-padding-large" href="#">My Profile</a></li>
+  </ul>
+</div>
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card-2 w3-round w3-white">
+        <div class="w3-container">
+         <h4 class="w3-center">My Profile</h4>
+         <p class="w3-center"><img src="<%=users.photo%>" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <hr>
+         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> <%=users.fullname%></p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i><%=users.email%></p>
+         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i><%=users.phone%></p>
+        </div>
+      </div>
+      <br>
+      
+      <!-- Accordion -->
+      <div class="w3-card-2 w3-round">
+        <div class="w3-accordion w3-white">
+          <button onclick="myFunction('Demo1')" class="w3-btn-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i>SUBSCRIPTION PLANS</button>
+          <div id="Demo1" class="w3-accordion-content w3-container">
+            <p><br></p>
+            <p>Your subscription plan: $<%=users.subscription%>/year</p>
+            <p>Adds allowed: <%=users.addallowed%></p>
+            <p>Adds posted: <%=users.addposted%></p>
+            <p>Posting status: <%=users.poststatus%></p>
+            <p><br></p>
+          </div>
+          <button onclick="myFunction('Demo2')" class="w3-btn-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i>BOOKMARKS</button>
+          <div id="Demo2" class="w3-accordion-content w3-container">
+          <p class="refresh" style="text-align: center;"></p>
+            <% bookmark_a.forEach(function(bookmark_a){%>
+            <table width="100%">
+              <tbody>
+                <tr class="trbookmark" id="removethis-<%=bookmark_a._id%>">
+                  <td width="10%"><img src="<%=bookmark_a.image%>" width="100px" heigth="100px"><br><br></td>
+                  <td width="80%"><%=bookmark_a.title%><br>$<%=bookmark_a.cost%><br><a href="<%=bookmark_a.propertyurl%>" target="_blank" class="w3-margin-left colorlink">VIEW MORE</a></td>
+                  <td width="10%"><p id="<%=bookmark_a._id%>" class="removebookmark"><input type="hidden" id="t-<%=bookmark_a._id%>" value="<%=bookmark_a.timestamp%>"><i class="fa fa-times w3-margin-right links"></i></p></td>
+                </tr>
+              </tbody>
+            </table>
+            <%}) %>
+          </div>
+          <button onclick="myFunction('Demo3')" class="w3-btn-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i>PREVIOUS POSTS</button>
+          <div id="Demo3" class="w3-accordion-content w3-container">
+         <div class="w3-row-padding">
+          <p class="refresh1" style="text-align: center;"></p>
+        <% pastproperty.forEach(function(pastproperty){%>
+            <table width="100%">
+              <tbody>
+                <tr class="trbookmark" id="removethis1-<%=pastproperty._id%>">
+                  <td width="10%"><img src="<%=pastproperty.image1%>" width="100px" heigth="100px"><br><br></td>
+                  <td width="80%"><%=pastproperty.title%><br>$<%=pastproperty.cost%><br><a href="https://usa-real-estates.herokuapp.com/detailedproperty/<%=pastproperty.timestamp%>" target="_blank" class="w3-margin-left colorlink">VIEW MORE</a></td>
+                  
+                  <td width="10%">
+                      <p id="<%=pastproperty._id%>" class="removeProperty">
+                        <input type="hidden" id="t1-<%=pastproperty._id%>" value="<%=pastproperty.timestamp%>">
+                        <i class="fa fa-times w3-margin-right links"></i>
+                      </p>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+            <%}) %>
+         </div>
+          </div>
+        </div>      
+      </div>
+      <br>
+      
+      <!-- Interests --> 
+      
+      <br>
+      <% messages.forEach(function(messages){%>
+        <div class="w3-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+          <span onclick="this.parentElement.style.display='none'" class="w3-hover-text-grey w3-closebtn">
+            <i class="fa fa-remove"></i>
+          </span>
+          <p><strong><%=messages.subject%></strong></p>
+          <p><%=messages.messageat%></p>
+          <p><%=messages.message%></p>
+        </div>
+            <%}) %>
+      <!-- Alert Box -->
+      
+
+    
+    <!-- End Left Column -->
+    </div>
+    
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+    
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Leave a message for an ADMIN</h6>
+              <p contenteditable="true" id="comment" class="w3-border w3-padding">Hello Admin, </p>
+              <button type="button" id="emailtoadmin" class="w3-btn w3-theme"><i class="fa fa-pencil"></i> SEND MESSAGE TO ADMIN</button> <p id="lodargif"></p><p id="lodargif2"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% timeline.forEach(function(timeline){%>
+       <div class="w3-container w3-card-2 w3-round w3-margin" style="background-color: #f4f4f4">
+        <img src="<%=timeline.noteimage%>" alt="Avatar" style="width:60px">
+        <h4><p class="heading"><%=timeline.action%></p></h4>
+        <span><%=timeline.dateField%></span><br>
+        <span><%=timeline.message%></span><br>
+        <span><%=timeline.excessMsg%></span><br></p>
+      </div>  
+       <%}) %>
+     
+
+     <!--  <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">32 min</span>
+        <h4>Angie Jane</h4><br>
+        <hr class="w3-clear">
+        <p>Have you seen this?</p>
+        <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+      </div> 
+       -->
+    <!-- End Middle Column -->
+    </div>
+    
+    <!-- Right Column -->
+    <div class="w3-col m2">
+      <div class="w3-card-2 w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p class="heading">USA REAL ESTATES PACKAGES:</p>
+          <img src="../images/$5.jpg" alt="Forest" style="width:100%;">
+          <img src="../images/$15.jpg" alt="Forest" style="width:100%;">
+          <img src="../images/$45.jpg" alt="Forest" style="width:100%;">
+          <p><strong></strong></p>
+          <p></p>
+          <p><a href="../paypal" target="_blank" class="w3-btn w3-btn-block w3-theme-l4">BUY NOW</a></p>
+        </div>
+      </div>
+      <br>
+      
+      <div class="w3-card-2 w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>HOME</p>
+          <img src="http://shubhamyeole.byethost8.com/public_html/logo.jpg" alt="Avatar" style="width:50%"><br>
+          <span>USA REAL ESTATES</span>
+          <div class="w3-row w3-opacity">
+              <button class="w3-btn w3-green w3-btn-block w3-section" title="Accept"><a href="../" target="_blank"><i class="fa fa-home"></i></a></button>
+            
+          </div>
+        </div>
+      </div>
+      <br>
+      
+      <!-- <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center">
+        <p><i class="fa fa-home w3-xxlarge"></i></p>
+      </div>
+      <br>
+      
+      <div class="w3-card-2 w3-round w3-white w3-padding-32 w3-center">
+        <p><i class="fa fa-home w3-xxlarge"></i></p>
+      </div> -->
+      
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+<br>
+
+<!-- Footer -->
+
+<script>
+// Accordion
+function myFunction(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-theme-d1";
+    } else { 
+        x.className = x.className.replace("w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-theme-d1", "");
+    }
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+</html> 
+
+  <!-- Start Properties  -->
+ 
+  <!-- / Properties  -->
+
+  <!-- Footer -->
+<% include partials/footer.ejs %>
+  <!-- / Footer -->
+
+
+  <!-- jQuery library -->
+  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="../theme/js/jquery.min.js"></script>   
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../theme/js/bootstrap.js"></script>   
+  <!-- slick slider -->
+  <script type="text/javascript" src="../theme/js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="../text/javascript" src="theme/js/nouislider.js"></script>
+  
+  <!-- Custom js -->
+  <script src="../theme/js/custom.js"></script> 
+
+
+
+  </body>
+</html>
+

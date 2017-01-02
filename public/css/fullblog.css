@@ -1,0 +1,31 @@
+#addpadding{ padding: 2; background-color: white;}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+.header li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111111;
+}
+#commenterdiv{background-color: #fcfcfc;padding: 1%; -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);}
+#commentername{font-size: 25px;}
+#timespan{float: right; font-size: 15px; font-weight: bold;}
+#commentptag{background-color: #f9f9f9
+; padding: 2%;}

@@ -1,0 +1,92 @@
+<% include interview/header.ejs %>
+<% include interview/footer.ejs %>
+<link rel="stylesheet" type="text/css" href="../interview/css/timetablemanagecategories.css">
+<link rel="stylesheet" type="text/css" href="../interview/css/circle.css"> 
+<script src="../interview/js/timetablemanagecategories.js"></script> 
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <h1 id="errmsg"></h1>
+                <h1>TITLE: <%= timetablename.timetablename %></h1>
+                <p id="totalquestions">TOTAL QUESTIONS: <%= timetablename.totalquestions %></p>
+                <p id="solvedquestions">TOTAL ANSWERED: <%= timetablename.solvedquestions %>
+                  <input type="hidden" id="update-cat-no" value="<%= timetablename.totalcategories %>">
+                  <input type="hidden" id="update-timestamp" value="<%= timetablename.timestamp %>">
+                  <input type="hidden" id="update-timetablename" value="<%= timetablename.timetablename %>">
+                  <input type="hidden" id="update-timetableid" value="<%= timetablename._id %>">
+                  <input type="hidden" id="update-timetablename" value="<%= timetablename.timetablename %>">
+                  
+                </p>
+
+                <a href="#popup1" class="add-cat" id="" data-id="">Add More Category : <img src="../images/add.jpg"  height="33"></a>
+                <div style="float: right; margin-top: -110px">
+                  <div class="c100 p<%= timetablename.percent %> large green">
+                    <span class="percentid"><%= timetablename.percent %>%</span>
+                    <div class="slice">
+                      <div class="bar"></div>
+                      <div class="fill"></div>
+                    </div>
+                  </div>
+                </div>
+                <br><hr>
+                <div id="lodardiv"></div>
+                <% timetable.forEach(function(timetable){%>
+                  <div class="aa-top-slider-single">
+                    <!-- Top slider content -->
+                    <div class="aa-top-slider-content">
+                      <div class="section group">
+                        <div class="col span_1_of_4">
+                        <span class="aa-top-slider-title" style="margin-top: -130px"><%= timetable.category %></span>
+                        </div>
+                        <div class="col span_1_of_4">
+                        <span class="beginsat">Begins at: <%= timetable.from %> </span>| <span class="deadline">Deadline: <%= timetable.to %></span>
+                        </div>
+                        <div class="col span_1_of_4">
+                          <input type="hidden" id="timetableid-<%= timetable.timestamp %>" value="<%= timetable.timetableid %>">
+                      <input type="hidden" id="category-<%= timetable.uniqueid %>" value="<%= timetable.category %>">
+                      <input type="hidden" id="totalquestions-<%= timetable.uniqueid %>" value="<%= timetable.totalquestions %>">
+                      <a id="<%= timetable.uniqueid %>" data-id="<%= timetable.timestamp %>" class="aa-top-slider-btn">Add Question<span class="fa fa-angle-double-right"></span></a> | 
+ 
+                      <a id="<%= timetable.uniqueid %>" class="viewquestion">View Questions<span class="fa fa-angle-double-right"></span></a> 
+
+
+                      <span id="lodardiv-<%= timetable.uniqueid %>"></span>
+                        </div>
+                        <div class="col span_1_of_4">
+                          <div style="float: right; margin-top: -30px">
+                            <div class="c100 p<%= timetable.percent %> small">
+                              <span><%= timetable.percent %>%</span>
+                              <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>                      
+                     
+                      <div class="addQuestion-<%= timetable.uniqueid %> addque"></div><br>
+                      <div class="appendQuestion-<%= timetable.uniqueid %> appque"></div>
+                      <br><br>
+                    </div>
+                </div>
+                <%}) %>
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+<div id="popup1" class="overlay">X
+  <div class="popup">
+    <div class="content"><h1 id="timetable"></h1><h3 id="question"></h3>
+      <a class="close" href="#"> &times;</a>
+    </div>
+    <div id='inputform' style='height:440px;width:100%;'></div>
+    <div id='updateform'></div>
+    <div id='questionuniquedata'></div>
+    <div id='updateformloader'></div>
+
+  </div>
+</div>
+       

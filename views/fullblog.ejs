@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html>
+<html>
+<title>Shubham Java & NodeJs Blog</title>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+<link rel="stylesheet" type="text/css" href="/css/datatable.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <!-- ****************************************High Lighter PLUGINs**************************************** -->
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+  <!-- ****************************************Google PLUGINs**************************************** -->
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+ <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAWPMDGHGh-KUNMkjSIlMBD1JMtTfbxk&callback=initMap"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <!-- ****************************************My PLUGINs**************************************** -->
+  <link rel="stylesheet" type="text/css" href="/css/fullblog.css">
+
+  <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+  
+  <script src="../../js/navigator.js"></script>
+  <script src="../../js/fullblog.js"></script>
+ 
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+
+</script>
+<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../../css/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- w3-content defines a container for fixed size centered content,
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+
+<% include partials/loginheader.html %>
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="../../images/<%= blog.imagename %>.jpg" alt="Nature" style="width:100%; height: 300px">
+    <div class="w3-container w3-padding-8">
+      <hr><h1><b>Post Title: <%= blog.title %></b></h1><hr>
+      <input type="text" name="" id="idinurl" value="<%= blog._id %>">
+      <h5>Posted by: <%= blog.name %>,<br> 
+      <h5>Blog category: <%= blog.category %>,<br> 
+      <span class="w3-opacity"><%= blog.date %></span></h5>
+      <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fjava-nodejs-blog.herokuapp.com%2Fview%2Fblog%2F<%= blog._id%>&layout=button_count&size=small&mobile_iframe=true&appId=298310910569242&width=69&height=20" width="89" height="30" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+      <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script><br>
+      <script type="IN/Share" data-url="https://java-nodejs-blog.herokuapp.com/view/blog/<%= blog._id%>" data-counter="right"></script><br> 
+      <span class="w3-opacity">
+	      Posted from GPS: &nbsp;	&nbsp;&nbsp;	&nbsp;<a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>
+      </span>
+    </div>
+
+    <div class="w3-container">
+      <p><div class="wrapper" style><%- blog.data %></div></p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><span class="w3-tag"><a href="/dashboard">Home</a></span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <div class="w3-container w3-padding-8">
+      <h3><b>Comments</b></h3>
+      <h5 id="scrolldown">Add a public comment:<span class="w3-opacity">efrdbf</span></h5>
+      <input type="text" name="firstname" id="firstname" VALUE="" placeholder="First Name">
+      <input type="text" name="lastname" id="lastname" VALUE="" placeholder="Last Name"><br><br>
+      <input type="hidden" name="blogid" id="blogid" VALUE="<%= blog._id %>">
+      <input type="hidden" name="url" id="url" VALUE="">
+      <input type="hidden" name="long" id="long" VALUE="">
+      <input type="hidden" name="lat" id="lat" VALUE="">
+      <textarea rows="4" cols="42" name="comment" id="comment" placeholder="Add a public comment:" ></textarea><br><br>
+      <input type="submit" id="submitcomment" value="SUBMIT">
+      <hr>
+      <div id="appendcomments1"></div>
+      <div id="appendcomments"></div>
+    </div>
+
+    <div class="w3-container">
+
+      
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><span class="w3-badge"><a href="/dashboard">Home</a></span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Introduction menu -->
+
+  
+<script type="text/javascript">
+  
+  $(document).on("click",".w3-padding-16",function() { 
+      var id = $(this).attr('id');
+    window.location = "https://java-nodejs-blog.herokuapp.com/dashboard/"+id;
+});
+
+</script>
+    <% include partials/tiles/rightsidedown.html %>
+
+  
+ 
+  <!-- Labels / tags -->
+  <div class="w3-card-2 w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Tags</h4>
+    </div>
+    <div class="w3-container w3-white">
+    <p><span class="w3-tag w3-black w3-margin-bottom">Pace University</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Computer Science</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Seidenberg School</span> 
+    </p>
+    </div>
+  </div>
+  
+<!-- END Introduction Menu -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+ <center><p style="font-size: 2em; font-weight: bold; color: #cecece">
+ &copy; 2016 java-nodejs-blog.herokuapp.com. All Rights Reserved.
+ </p>
+ <p>Developed by: Shubham Yeole</p>
+ <p>+(201) 887-5323</p>
+ <p>10 Front street,</p>
+ <p>Jersey City</p>
+ <p>07302 NJ</p>
+ <p>USA</p>
+
+ </center>
+</footer>
+
+
+<div id="popup1" class="overlay">X
+	<div class="popup">
+		<div class="content"><h1>Java & NodeJS blog</h1><h3>by Shubham Yeole</h3>
+		<a class="close" href="#"> &times;</a>
+		</div>
+			<div id='gmap_canvas' style='height:440px;width:100%;'></div>
+		
+	</div>
+<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+
+<style type="text/css">
+
+</style>
+			</div>
+		</div>
+		
+<style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+		<script type='text/javascript'>
+function init_map(x,y,z){
+	var myOptions = {center: myCenter,
+		zoom:15,center:new google.maps.LatLng(x,y),mapTypeId: google.maps.MapTypeId.MAP};
+		var myCenter = new google.maps.LatLng(x, y); 
+
+		map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+
+		marker = new google.maps.Marker({position: myCenter, map: map});
+
+		infowindow = new google.maps.InfoWindow({content:z});
+
+		google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
+
+		infowindow.open(map,marker);}
+</script>
+</body>
+</html>
+

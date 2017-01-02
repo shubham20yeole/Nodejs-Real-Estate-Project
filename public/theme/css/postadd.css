@@ -1,0 +1,79 @@
+#longlati{ color: #5C6BC0; background-color: #f7f4fc; padding: 2%; font-weight: bold }
+#postform{ background-color: white; padding: 2%; }
+.i{margin-left: 550px; margin-top: -50px;}
+.remove_field1, .remove_field{padding-left: 3%; color: red;}
+#categoryselect, #addselect, .aa-properties-content input[type="text"], .aa-properties-content input[type="file"],.aa-properties-content input[type="password"],.aa-properties-content input[type="email"]{
+ width: 32%;  box-sizing: border-box;    border: 2px solid #ccc;    border-radius: 4px;    font-size: 16px;    background-color: white;    background-image: url('/images/logo.jpg');
+    background-size: 30px 30px;    background-position: 10px 10px;    background-repeat: no-repeat;    padding: 12px 20px 12px 40px;    -webkit-transition: width 0.4s ease-in-out;    transition: width 0.4s ease-in-out;
+}
+#title{
+    width: 450px;    box-sizing: border-box;    border: 2px solid #ccc;    border-radius: 4px;    font-size: 16px;    background-color: white;    background-image: url('https://cdn1.iconfinder.com/data/icons/social-media-3/512/615556-Pencil_Document-512.png');
+    background-size: 30px 30px;    background-position: 10px 10px;    background-repeat: no-repeat;    padding: 12px 20px 12px 40px;    -webkit-transition: width 0.4s ease-in-out;    transition: width 0.4s ease-in-out;
+}
+#title:focus {
+    width: 700px;
+}
+.addWidth{width: 100%}
+.loginButton{background-color: black; color: white; padding: 3%; cursor: pointer;}
+.loginButton:hover{background-color: #f4f4f4; color: black;}
+#fbloginmsg{ font-size: 2em; font-weight: bold }
+.aa-properties-content lable{font-weight: bold; font-size: 1.1em;}
+.aa-properties-content hr{color: black;}
+#showerror{color: red; font-weight: bold;}
+.aa-properties-content input[type="file"]{
+	position: relative;
+   font-family: calibri;
+   width: 350px;
+   padding: 10px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border: 1px dashed #BBB; 
+   text-align: center;
+   background-color: #DDD;
+   cursor:pointer;
+}
+.aa-properties-details button {
+     background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 6px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+     background-color: #3B2F63;
+    color: white;
+    border: 2px solid #3B2F63;
+}
+
+.aa-properties-details button:hover {
+
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+input[type="submit"] {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 6px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+     background-color: white;
+    color: black;
+    border: 2px solid #3B2F63;
+}
+
+
+input[type="submit"]:hover {
+    background-color: #3B2F63;
+    color: white;
+}
