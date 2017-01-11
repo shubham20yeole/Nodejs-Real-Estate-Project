@@ -6,13 +6,17 @@
         <div id="page-wrapper">
             <div id="page-inner">
                 
-                <h1>NEW TIME TABLE</h1><hr>
+                <h1>NEW TIME TABLE</h1>
+                <h4>Create new time table below by adding titile and categories to it. Later you can add more tasks in each category from <a href="http://shubham-great-livings.herokuapp.com/timetableall" target="_blank">manage timetable</a>.</h4>
+                <hr>
                 <form action="submitnewtimetable" method="post">
-                <input type="text" name="timetablename" class="timetablename" placeholder="ENTER TIMETABLE NAME"><hr>
+                <input type="text" name="timetablename" class="timetablename" placeholder="ENTER TIMETABLE NAME" required="true"><hr>
                 <div class="input_fields_wrap">
                     <button class="add_field_button">Add More Fields</button><br><br><br>
+                    <p style="color: red;">*** ALL FIELDS ARE MANDATORY ***</p>
                     <div>
-                            <input type="text" name="category" class="category" placeholder="Type Category"><input type="date" name="from" class="from"><input type="date" name="to" class="to">
+                            <input type="text" name="category" class="category" placeholder="Type Category" required="true"><input type="date" name="from" class="from" required="true"><input type="date" name="to" class="to" required="true">
+                            <input type="text" name="category" class="category" placeholder="Type Category" required="true"><input type="date" name="from" class="from" required="true"><input type="date" name="to" class="to" required="true">
                     </div>
                 </div><br><br><br>
                 <input type="submit" class="save" value="SAVE">
