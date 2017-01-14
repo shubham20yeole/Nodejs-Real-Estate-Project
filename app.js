@@ -1137,7 +1137,6 @@ var datetime = date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()+" at 
 var long = req.body.long;
 var lat = req.body.lat;
 var whatdone = req.body.task;
-console.log(long+", "+lat+", "+whatdone);
 var lat_1 = Number(lat)-0.000203;
 var lat_2 = Number(lat)+0.000203;
 var long_1 = Number(long)-0.00070989999;
@@ -1182,7 +1181,6 @@ var datetime = date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()+" at 
 var long = req.body.long;
 var lat = req.body.lat;
 var whatdone = req.body.task;
-console.log(long+", "+lat+", "+whatdone);
 var lat_1 = Number(lat)-0.000203;
 var lat_2 = Number(lat)+0.000203;
 var long_1 = Number(long)-0.00070989999;
