@@ -1,6 +1,6 @@
 var express = require('express');
 var SparkPost = require('sparkpost');
-var sp = new SparkPost('xxx');
+var sp = new SparkPost('9bf6b6d7079252cab943971ff90c08cc3a9cee0d');
 var port = process.env.PORT || 3000
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -8,16 +8,16 @@ var expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var mongodb = require('mongodb')
 var collections = ["users", "blog", "comments", "property", "images", "notification", "bookmark", "messages","timetable", "timetablecategory", "timetablequestion", "locations"]
+var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds163387.mlab.com:63387/paceteam3', collections)
 
-var db = mongojs('mongodb://xxx:xxx@xxx.mlab.com:xxx/xxx', collections)
-var JSFtp = require("jsftp");
-
-var Ftp = new JSFtp({
-    host: 'ftp.xxx.com',
-    port: 21,
-    user: 'xxx',
-    password: 'XXX'
-});
+var Client = require('ftp');
+var fs = require('fs');
+var config = {
+  host: 'ftp.byethost8.com',
+  port: 21,
+  user: 'b8_19205430',
+  password: 'Shubham4194'
+}
 var app = express();
 var ObjectId = mongojs.ObjectId;
 var passport = require("passport")
@@ -26,15 +26,14 @@ var session = require('client-sessions');
 var nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport")
 var smtpTransport = nodemailer.createTransport(smtpTransport({
-    host : "smtp.sendgrid.net",
+    host : "smtp.gmail.com",
     secureConnection : false,
     port: 587,
     auth : {
         user : "shubham20.yeole@gmail.com",
-        pass : "xxx"
+        pass : "shubhamyeole20"
     }
 }));
-
 
 function sendEmail(email, subject, title, message){
 var emailBody = '<html><body style="padding:40px; background-color: #E3F2FD"><header style="background-color: #2196F3; padding: 10px !important; margin:0px !important;"><h1 style="color: #E3F2FD; text-align:center">Shubham-Great-Livings</h1></header><div style="background-color:#E3F2FD; "><h2 style="color:#E3F2FD; float: left; padding:5px;margin:0px !important; "><img src="https://cdn2.iconfinder.com/data/icons/New-Social-Media-Icon-Set-V11/512/email.png" width="22" height="22">shubhamyeole.cs@gmail.com</h2><h2 style="color:#E3F2FD; float: right; margin-top: -100cm; padding:5px; margin:0px !important; "><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/phone-icon.png" width="22" height="22"> +1 (201) 887-5323</h2></div><div style="background-image: url(http://www.ironfish.com.au/wp-content/uploads/2014/12/house-architecture-photography-hd-wallpaper-1920x1200-9237-1024x640.jpg); background-size: 100% 700px; height:auto; width:100%; overflow:hidden; background-repeat: no-repeat;"><div style=" background-color: #E3F2FD; width:300px;  text-align:center; margin:15% 30%; padding:1%; border-radius:15px; opacity: 0.7;"><h2 style="color: #052f3b; text-align:center;">[TITLE]</h2></div></div><div style=" background-color: #E3F2FD; padding: 3%;"><br><br><br>[MESSAGE]<br><br><br>Best, The Shubham-Great-Livings Accounts team <br><br> *You are receiving this email because you signed up for alerts from Shubham-Great-Livings  10 Front Street, Jersey City, NY 07302 <br><br></div><footer style="background-color: #2196F3; padding: 3px !important; margin:0px !important;color: #E3F2FD; text-align: center; padding: 2%;">&#169; 2016 Shubham-Great-Livings. All Rights Reserved.</footer></body></html>';
@@ -278,9 +277,7 @@ app.post('/login', function(req, res) {
 });
 
 app.get('/newpassword/:id', function(req, res){
-    // console.log("In get comment method: "+req.params.id);
   db.users.findOne({_id: ObjectId(req.params.id)}, function (err, users) {
-    // console.log(users);
     res.render("setnewpassword.ejs",{users: users});
   }); 
 
@@ -290,9 +287,9 @@ app.post('/newpasswordupdate', function(req, res){
     // console.log("In newpasswordupdate method: "+req.body.email);
     var email = req.body.email;
   db.users.update({ email: req.body.email}, {$set:{password: req.body.passcode}}, function (err, result) {
+      req.session.users = result;
       sendEmail(req.body.email, "Password Reset", "SUCCESSFULLY PASSWORD RESETTED ON Shubham-Great-Livings", "Your password is successfully resetted at Shubham-Great-Livings. If you have not done this action please let us know at shubham20.yeole@gmail.com. Click the button below to visit our platform. <br><br><a href='https://shubham-great-livings.herokuapp.com/' target='_blank'>HOME</a><br><br>");
-  res.render("message.ejs",{property: "REGISTERED", status: 'registered', message: 'Password reset successful.', link: '<a href="/propertiesbymaps">Click me to view our properties by google map...</a>'});
-  
+      res.render("message.ejs",{property: "REGISTERED", status: 'registered', message: 'Password reset successful.', link: '<a href="/propertiesbymaps">Click me to view our properties by google map...</a>'});
     });
 });
 

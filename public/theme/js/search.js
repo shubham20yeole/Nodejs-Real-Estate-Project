@@ -3,13 +3,8 @@ $( document ).ready(function() {
 
 });
 $("#searchloccation").on("keyup change",function() {
-  var loc = $('#searchloccation').val();
-  var cat = $('#searchcategory').val();
-  var type = $('#searchtype').val();
-  var bed = $('#searchbedroom').val();
-  var price = $('#').val();
-  var area = $('#').val();
-  $.post( "/search/", { location: loc, category: cat, type: type, bedroom: bed})
+  var loc = $('#searchloccation').val().toLowerCase();
+  $.post( "/search/", { location: loc})
     .done(function( data ) 
       {       
         $('#searchtable').show();
