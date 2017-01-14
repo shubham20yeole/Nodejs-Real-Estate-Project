@@ -112,7 +112,7 @@ $(document).ready(function() {
 
      $(document).on("click","#cancelupdatequeans", function(){
      	$("#popup1").hide();
-		window.location.replace("https://usa-real-estates.herokuapp.com/managecategories/"+updatetimestamp);
+		window.location.replace("http://shubham-great-livings.herokuapp.com/managecategories/"+updatetimestamp);
      });
      $(document).on("click","#submitupdatequeans", function(e){
      	var updatetimestamp = $("#update-timestamp").val();
@@ -128,7 +128,7 @@ $(document).ready(function() {
     			setTimeout(function(){ 
 					$("#popup1").hide();
 					$("#errmsg").text("RELOAD THE PAGE TO SEE RECENT ACTION METHOD....");
-					window.location.replace("https://usa-real-estates.herokuapp.com/managecategories/"+updatetimestamp);
+					window.location.replace("http://shubham-great-livings.herokuapp.com/managecategories/"+updatetimestamp);
 			    },2550);
     		},2000);
 	    });
@@ -241,7 +241,7 @@ function splitDate(str) {
 	    	$(this).hide();
     			setTimeout(function(){ 
 					$("#popup1").hide();
-					window.location.replace("https://usa-real-estates.herokuapp.com/managecategories/"+$("#update-timestamp").val());
+					window.location.replace("http://shubham-great-livings.herokuapp.com/managecategories/"+$("#update-timestamp").val());
 
 			    },550);
     		},2000);
