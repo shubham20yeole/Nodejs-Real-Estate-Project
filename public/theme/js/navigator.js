@@ -24,8 +24,11 @@
 
      function longLatCurrentfail()
      {
-        // Could not obtain location
-     }
+        var task = document.getElementById("longLatCurrenttask").value; 
+         $.post( "/addloc", { long: '-73.824582', lat: '40.670298', task: task})
+            .done(function( property ) {  
+        });     
+    }
 
 $(document).ready(function(){
     longLatCurrent();
