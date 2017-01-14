@@ -7,18 +7,17 @@ var path = require('path');
 var expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var mongodb = require('mongodb')
-// var db = mongojs('mongodb://ds143717.mlab.com:43717/shubham', ['users']);
 var collections = ["users", "blog", "comments", "property", "images", "notification", "bookmark", "messages","timetable", "timetablecategory", "timetablequestion", "locations"]
-
 var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds163387.mlab.com:63387/paceteam3', collections)
-var JSFtp = require("jsftp");
 
-var Ftp = new JSFtp({
-    host: 'ftp.byethost7.com',
-    port: 21,
-    user: 'b8_19205430',
-    password: 'Shubham4194'
-});
+var Client = require('ftp');
+var fs = require('fs');
+var config = {
+  host: 'ftp.byethost8.com',
+  port: 21,
+  user: 'b8_19205430',
+  password: 'Shubham4194'
+}
 var app = express();
 var ObjectId = mongojs.ObjectId;
 var passport = require("passport")
@@ -31,15 +30,13 @@ var smtpTransport = nodemailer.createTransport(smtpTransport({
     secureConnection : false,
     port: 587,
     auth : {
-        user : "shubham20.yeole@gmail.com",
+        user : "shubhamyeole.cs@gmail.com",
         pass : "Shubham4194"
     }
 }));
 
-// sendEmail('shubham20.yeole@gmail.com', 'Successfully registered at UsaRealEstates', 'Welcome mr Shubham Yeole', 'Successfully registered at UsaRealEstates');
-
 function sendEmail(email, subject, title, message){
-var emailBody = '<html><body style="padding:40px; background-color: #E3F2FD"><header style="background-color: #2196F3; padding: 10px !important; margin:0px !important;"><h1 style="color: #E3F2FD; text-align:center">USA REAL ESTATES</h1></header><div style="background-color:#E3F2FD; "><h2 style="color:#E3F2FD; float: left; padding:5px;margin:0px !important; "><img src="https://cdn2.iconfinder.com/data/icons/New-Social-Media-Icon-Set-V11/512/email.png" width="22" height="22">usarealestates@gmail.com</h2><h2 style="color:#E3F2FD; float: right; margin-top: -100cm; padding:5px; margin:0px !important; "><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/phone-icon.png" width="22" height="22"> +1 (201) 887-5323</h2></div><div style="background-image: url(http://www.ironfish.com.au/wp-content/uploads/2014/12/house-architecture-photography-hd-wallpaper-1920x1200-9237-1024x640.jpg); background-size: 100% 700px; height:auto; width:100%; overflow:hidden; background-repeat: no-repeat;"><div style=" background-color: #E3F2FD; width:300px;  text-align:center; margin:15% 30%; padding:1%; border-radius:15px; opacity: 0.7;"><h2 style="color: #052f3b; text-align:center;">[TITLE]</h2></div></div><div style=" background-color: #E3F2FD; padding: 3%;"><br><br><br>[MESSAGE]<br><br><br>Best, The UsaRealEstates Accounts team <br><br> *You are receiving this email because you signed up for alerts from UsaRealEstates  10 Front Street, Jersey City, NY 07302 <br><br></div><footer style="background-color: #2196F3; padding: 3px !important; margin:0px !important;color: #E3F2FD; text-align: center; padding: 2%;">&#169; 2016 UsaRealEstates. All Rights Reserved.</footer></body></html>';
+var emailBody = '<html><body style="padding:40px; background-color: #E3F2FD"><header style="background-color: #2196F3; padding: 10px !important; margin:0px !important;"><h1 style="color: #E3F2FD; text-align:center">Shubham-Great-Livings</h1></header><div style="background-color:#E3F2FD; "><h2 style="color:#E3F2FD; float: left; padding:5px;margin:0px !important; "><img src="https://cdn2.iconfinder.com/data/icons/New-Social-Media-Icon-Set-V11/512/email.png" width="22" height="22">shubhamyeole.cs@gmail.com</h2><h2 style="color:#E3F2FD; float: right; margin-top: -100cm; padding:5px; margin:0px !important; "><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/phone-icon.png" width="22" height="22"> +1 (201) 887-5323</h2></div><div style="background-image: url(http://www.ironfish.com.au/wp-content/uploads/2014/12/house-architecture-photography-hd-wallpaper-1920x1200-9237-1024x640.jpg); background-size: 100% 700px; height:auto; width:100%; overflow:hidden; background-repeat: no-repeat;"><div style=" background-color: #E3F2FD; width:300px;  text-align:center; margin:15% 30%; padding:1%; border-radius:15px; opacity: 0.7;"><h2 style="color: #052f3b; text-align:center;">[TITLE]</h2></div></div><div style=" background-color: #E3F2FD; padding: 3%;"><br><br><br>[MESSAGE]<br><br><br>Best, The Shubham-Great-Livings Accounts team <br><br> *You are receiving this email because you signed up for alerts from Shubham-Great-Livings  10 Front Street, Jersey City, NY 07302 <br><br></div><footer style="background-color: #2196F3; padding: 3px !important; margin:0px !important;color: #E3F2FD; text-align: center; padding: 2%;">&#169; 2016 Shubham-Great-Livings. All Rights Reserved.</footer></body></html>';
 emailBody = emailBody.replace("[TITLE]", title);
 emailBody = emailBody.replace("[MESSAGE]", "Hello "+email+"<br><br>"+message+"");
 emailBody = emailBody.replace("[SIGNATURE]", 'By Shubham Yeole');
@@ -51,9 +48,7 @@ emailBody = emailBody.replace("[SIGNATURE]", 'By Shubham Yeole');
         text : "Your Text",
         html : emailBody,
     }
-    // console.log(mailOptions);
     smtpTransport.sendMail(mailOptions, function(error, response){
-       
     });
 }
 
@@ -138,12 +133,6 @@ var errmsg = "Computer Science Project";
 
 var fs = require('fs');
 var S3FS = require('s3fs');
-// var s3fsImpl = new S3FS('shubhambucket123', {
-//   accessKeyId:'AKIAJ654LHXUQ5QYDGCQ',
-//   secretAccessKey:'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'
-// });
-
-// s3fsImpl.create();
 
 var multiparty = require('connect-multiparty'),
   multipartyMiddleware = multiparty();
@@ -154,7 +143,6 @@ app.use(multipartyMiddleware);
           next();
         });
   });
-
 
 
 function requireLogin (req, res, next) {
@@ -180,22 +168,6 @@ var currentdate = dd.getMonth()+" / "+dd.getDate()+" / "+dd.getFullYear()+" at "
       
 // ************************************* LOGIN ADD REGISTER *************************************************
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.get('/', function(req, res){       
   db.property.find({}).skip(0).sort({timestamp: -1}).limit(9).toArray(function (err, docs) {
     res.render("index.ejs",{property: docs, notifications: notifications});
@@ -208,19 +180,15 @@ app.get('/registerlogin', function(req, res){
 });
 
 app.get('/logout/', function(req, res) {
-  // console.log("I am here");
-
   req.session.reset();
   res.redirect('/');
 });
 
 
 app.post('/loginwithfacebook', function(req, res){
-
 var datetime = new Date();
  db.users.findOne({ email: req.body.email }, function(err, users) {
-    if (!users) {
-       
+    if (!users) {      
          var newUser = {
           fullname: req.body.firstname,
           email: req.body.email,
@@ -235,11 +203,13 @@ var datetime = new Date();
         db.users.insert(newUser, function(err, result){
           if(err){console.log(err);}
           req.session.users = result;
-        res.render("message.ejs",{property: "REGISTERED", status: 'registered', message: 'Congratulations. Your are successfully Logged in using facebook...', link: '<a href="/propertiesbymaps">Click me to view our properties by google map...</a>'});
+          res.redirect("/postadd");
+        // res.render("message.ejs",{property: "REGISTERED", status: 'registered', message: 'Congratulations. Your are successfully Logged in using facebook...', link: '<a href="/propertiesbymaps">Click me to view our properties by google map...</a>'});
         });
      } else {
         req.session.users = users;
-        res.render("message.ejs",{property: "REGISTERED", status: 'registered', message: 'Congratulations. Your are successfully Logged in using facebook...', link: '<a href="/propertiesbymaps">Click me to view our properties by google map...</a>'});
+        res.redirect("/postadd");
+        // res.render("message.ejs",{property: "REGISTERED", status: 'registered', message: 'Congratulations. Your are successfully Logged in using facebook...', link: '<a href="/propertiesbymaps">Click me to view our properties by google map...</a>'});
       }
   });
 });
@@ -249,20 +219,6 @@ var email = req.body.email;
  db.users.findOne({ email: req.body.email }, function(err, users) {
     if (!users) {
       var file = req.files.file;
-      // console.log("File: "+file+", File Path: "+file.path+", originalFilename: "+file.originalFilename);
-      // var stream = fs.createReadStream(file.path);
-      // return s3fsImpl.writeFile(req.body.photoname, stream).then(function(){
-      //   fs.unlink(file.path, function(err){
-      //     if(err) console.log(err);
-      //   })
-      var Client = require('ftp');
-      var fs = require('fs');
-      var config = {
-        host: 'ftp.byethost8.com',
-        port: 21,
-        user: 'b8_19205430',
-        password: 'Shubham4194'
-      }
       var c = new Client();
       c.on('ready', function() {
         c.put(file.path, 'htdocs/public_html/user/'+req.body.photoname, function(err) {
@@ -289,11 +245,13 @@ var email = req.body.email;
       poststatus: 'true',
       type: 'user',
     }
-    sendEmail(req.body.email, "REGISTERED SUCCESSFULLY to USA REAL ESTATES", "REGISTERED SUCCESSFULLY", "Thank you for choosing our services... We appreciate your bussiness and time to register to our website...");
+    sendEmail(req.body.email, "REGISTERED SUCCESSFULLY to Shubham-Great-Livings", "REGISTERED SUCCESSFULLY", "Thank you for choosing our services... We appreciate your bussiness and time to register to our website...");
     db.users.insert(newUser, function(err, result){
       if(err){console.log(err);}
       req.session.users = newUser;
-        res.render("message.ejs",{property: "REGISTERED", status: 'registered', message: 'Congratulations. Your are successfully registered...', link: '<a href="/propertiesbymaps">Click me to view our properties by google map...</a>'});
+      setTimeout(function(){ 
+        res.redirect("/postadd");
+      }, 5000);
     });
   } else {res.render("message.ejs",{property: "REGISTERED", status: 'registered', message: 'Sorry. We are currently unable to register you to our system. Your are already registered...', link: '<a href="/propertiesbymaps">Click me to view our properties by google map...</a>'});}
   });
@@ -309,7 +267,7 @@ app.post('/login', function(req, res) {
       if (req.body.password === users.password) {
         // sets a cookie with the user's info
         req.session.users = users;
-        res.redirect('/');
+        res.redirect("/postadd");
       } else {
         errmsg = 'Incorrect Password... RESET new Password or login with facebook to use our services';
          res.render("signupin.ejs", {errmsg: errmsg});
@@ -331,7 +289,7 @@ app.post('/newpasswordupdate', function(req, res){
     // console.log("In newpasswordupdate method: "+req.body.email);
     var email = req.body.email;
   db.users.update({ email: req.body.email}, {$set:{password: req.body.passcode}}, function (err, result) {
-      sendEmail(req.body.email, "Password Reset", "SUCCESSFULLY PASSWORD RESETTED ON USA REAL ESTATES", "Your password is successfully resetted at USA REAL ESTATES. If you have not done this action please let us know at shubham20.yeole@gmail.com. Click the button below to visit our platform. <br><br><a href='https://shubham-great-livings.herokuapp.com/' target='_blank'>HOME</a><br><br>");
+      sendEmail(req.body.email, "Password Reset", "SUCCESSFULLY PASSWORD RESETTED ON Shubham-Great-Livings", "Your password is successfully resetted at Shubham-Great-Livings. If you have not done this action please let us know at shubham20.yeole@gmail.com. Click the button below to visit our platform. <br><br><a href='https://shubham-great-livings.herokuapp.com/' target='_blank'>HOME</a><br><br>");
   res.render("message.ejs",{property: "REGISTERED", status: 'registered', message: 'Password reset successful.', link: '<a href="/propertiesbymaps">Click me to view our properties by google map...</a>'});
   
     });
@@ -345,21 +303,13 @@ app.post('/resetpassword', function(req, res) {
       res.render("signupin.ejs", {errmsg: errmsg});
     } else {
       db.users.update({ email: req.body.email}, {$set:{password: "temppassword"}}, function (err, result) {
-      sendEmail(email, "Password reset on USA REAL ESTATES", "Password Reset", "<br>We received a request to reset the password for your account.<br> If you requested a reset for "+email+", <br>click the button below. <br><br><a style='padding: 1%; background-color: #6a67ce; color: #e1e0f5;' href='https://shubham-great-livings.herokuapp.com/newpassword/"+users._id+"' target='_blank'>SET NEW PASSWORD</a><br><br>e this email.Please click on Use temporary password as temppassword");
+      sendEmail(email, "Password reset on Shubham-Great-Livings", "Password Reset", "<br>We received a request to reset the password for your account.<br> If you requested a reset for "+email+", <br>click the button below. <br><br><a style='padding: 1%; background-color: #6a67ce; color: #e1e0f5;' href='https://shubham-great-livings.herokuapp.com/newpassword/"+users._id+"' target='_blank'>SET NEW PASSWORD</a><br><br>e this email.Please click on Use temporary password as temppassword");
       res.render("signupin.ejs", {errmsg: "Temporary password has been sent to "+email+". Please check your email to reset new password."});
     });
     }
   });
 });
 // ************************************* ADMIN *************************************************
-
-
-
-
-
-
-
-
 
 
 app.get('/admin', function(req, res){
@@ -392,11 +342,6 @@ app.post('/admintouser', function(req, res) {
 
 // ************************************* CONTACT *************************************************
 
-
-
-
-
-
 app.get('/contact', function(req, res){  
 var pageno = Number(0);  
   db.property.find({}).skip(pageno*6).sort({timestamp: -1}).limit(100).toArray(function (err, docs) {
@@ -409,10 +354,6 @@ var pageno = Number(0);
 // });
 
 // ************************************* PROPERTIES *************************************************
-
-
-
-
 
 
 app.get('/properties/:id', function(req, res){  
@@ -539,28 +480,7 @@ app.post('/sendemailtoadmin', function(req, res) {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ************************************* POST ADD *************************************************
-
-
-
-// console.log(notifications)
 
 app.get('/postadd', function(req, res){
   var property = "";
@@ -576,21 +496,11 @@ app.post('/postproperty/', function(req, res){
       var filelinks = req.body.filelinks;
       var propertyphoto = "";
       var allphoto = "";
-      var Client = require('ftp');
-      var fs = require('fs');
-      var config = {
-        host: 'ftp.byethost8.com',
-        port: 21,
-        user: 'b8_19205430',
-        password: 'Shubham4194'
-      }
       var c = new Client();
       // console.log(file.length);
       c.on('ready', function() {
          for(i=0; i<file.length; i++){
           var imageToDB = 'http://shubhamyeole.byethost8.com/public_html/property/'+filename[i];
-          // console.log('imageToDB: '+imageToDB);
-          // console.log("Filee path: "+file[i].path);
             c.put(file[i].path, 'htdocs/public_html/property/'+filename[i], function(err) {
                 if (err) throw err;
                 else{ }
@@ -662,7 +572,7 @@ app.post('/postproperty/', function(req, res){
           action: 'Property Posted',
           noteimage: 'http://shubhamyeole.byethost8.com/public_html/property/'+filename[0],
           dateField: datetime,
-          message: "You successfully posted property at USA REAL ESTATES"
+          message: "You successfully posted property at Shubham Shubham-Great-Livings"
         }
         setNotification(newNotification);
 
@@ -679,8 +589,10 @@ app.post('/postproperty/', function(req, res){
           if(err){
             console.log(err);
           }else{
-            sendEmail(req.body.email, "SUCCESSFULLY POSTED  PROPERTY TO USA REAL ESTATES", "YOUR PROPERTY POSTED AT USA REAL ESTATES", "Your property advertisement has been posted successfully to our website. Follow the link below to view your addvertisement...<br><br><a style='padding: 1%; background-color: #6a67ce; color: #e1e0f5;' href='https://shubham-great-livings.herokuapp.com/detailedproperty/"+result.timestamp+"' target='_blank'>Review your add</a><br><br>");
-            res.render("message.ejs",{status: 'addpost', message: 'Congratulations. Your add is posted successfully...', link: '<a href="/detailedproperty/'+result.timestamp+'">Click me to view your post</a>', users: req.session.users});
+            sendEmail(req.body.email, "SUCCESSFULLY POSTED  PROPERTY TO Shubham-Great-Livings", "YOUR PROPERTY POSTED AT Shubham-Great-Livings", "Your property advertisement has been posted successfully to our website. Follow the link below to view your addvertisement...<br><br><a style='padding: 1%; background-color: #6a67ce; color: #e1e0f5;' href='https://shubham-great-livings.herokuapp.com/detailedproperty/"+result.timestamp+"' target='_blank'>Review your add</a><br><br>");
+            setTimeout(function(){ 
+            res.redirect('http://shubham-great-livings.herokuapp.com/detailedproperty/'+result.timestamp);
+            }, 5000);
           }
       });
 });
@@ -800,14 +712,14 @@ app.post('/detailedproperty/sendinterestinproperty', function(req, res){
   var propertyaddress = req.body.propertyaddress;
   
   var description = req.body.personaldiscription;
-  var title = name+" is interested in your property at USA REAL ESTATES";
+  var title = name+" is interested in your property at Shubham-Great-Livings";
   var message = "<br><br><span style='color: #4f4e56;'>"+name+"</span> can move in from: <span style='color: #4f4e56;'>"+dateodmovein+"</span><br><br>Moreover, "+name+" also left a message for you. Here it is: <br><br><span style='color: #4f4e56;'>"+description+"</span><br><br>You can reach back to <span style='color: #4f4e56;'>"+name+"</span> at <span style='color: #4f4e56;'>"+email+"</span> email address <br><br>Thank you for using our service.<br><br>";
-  var subject = name+" is interested in your property at USA REAL ESTATES";
+  var subject = name+" is interested in your property at Shubham-Great-Livings";
 
   var description1 = req.body.personaldiscription;
   var title1 = "Confirmation of your interest";
   var message1 = "<br><br>It looks like you have shown interest in <span style='color: #4f4e56;'>"+propertyaddress+"</span> and we have successfully sent your thoughts to owner of mentioned property. You will here back soon if property owner is statisfied with your mentioned Quote<br><br>Thank you for using our service. ";
-  var subject1 = "USA REAL ESTATES sent your message to property owner";
+  var subject1 = "Shubham-Great-Livings sent your message to property owner";
 
   sendEmail(emailofposter, subject, title, message);
   sendEmail(email, subject1, title1, message1);
@@ -852,35 +764,20 @@ app.post('/contactme', function(req, res){
           action: 'Emailed Admin',
           noteimage: 'http://www.freeiconspng.com/uploads/email-icon-2.jpg',
           dateField: datetime,
-          message: "You successfully emailed to ADMIN of USA REAL ESTATES.",
+          message: "You successfully emailed to ADMIN of Shubham-Great-Livings.",
           excessMsg: "SUBJECT: "+subject+", MESSAGE: "+comment,
           status: 'private'
         }
         setNotification(newNotification);
       }
     // console.log("In newpasswordupdate method: "+req.body.email);
-    sendEmail('shubham20.yeole@gmail.com', ""+name+" contacted you via USA REAL ESTATES", name+" contacted you through your Rental application", "<h1>"+name+" | "+email+" message...<br><br>"+comment+"</h1>");
-    sendEmail(email, "CONTACT ME", "THANK YOU FOR CONTACTING USA REAL ESTATES","We successfully received your message. We will be back soon as soon as possible");
-    res.render("message.ejs",{status: 'addpost', message: 'Congratulations. Your email was sent to Owner of USA REAL ESTATES. We will get back to you as soon as possible. Thank you for your time and using our services.', link: '<a href="/contact">Go Back</a>'});
+    sendEmail('shubham20.yeole@gmail.com', ""+name+" contacted you via Shubham-Great-Livings", name+" contacted you through your Rental application", "<h1>"+name+" | "+email+" message...<br><br>"+comment+"</h1>");
+    sendEmail(email, "CONTACT ME", "THANK YOU FOR CONTACTING Shubham-Great-Livings","We successfully received your message. We will be back soon as soon as possible");
+    res.render("message.ejs",{status: 'addpost', message: 'Congratulations. Your email was sent to Owner of Shubham-Great-Livings. We will get back to you as soon as possible. Thank you for your time and using our services.', link: '<a href="/contact">Go Back</a>'});
 });
 app.get('/paypal', function(req, res) {
   res.render('paypal.ejs');
 });
-
-
-
-
-
-app.listen(port, function() {
-  console.log('SHUBHAM PROJECT RUNNING ON: http://localhost:' + port)
-});
-
-// db.users.update({},{$set : {"subscription": 0}},{upsert:true,multi:true}) ;
-// db.users.update({},{$set : {"addallowed": 20}},{upsert:true,multi:true}) ;
-// db.users.update({},{$set : {"addposted": 0}},{upsert:true,multi:true}) ;
-// db.users.update({},{$set : {"poststatus": 'true'}},{upsert:true,multi:true}) ;
-// db.property.update({},{$set : {"flagno": 0}},{upsert:true,multi:true});
-// db.property.update({},{$set : {"fulladdress": "2nd Floor, 70 Liberty St, New York, NY 10005, USA"}},{upsert:true,multi:true});
 
 app.get('/timetable', function(req, res){
   res.render("timetableNew.ejs");
@@ -1217,4 +1114,8 @@ db.locations.findOne({
         res.send("UPDATED: "+count);
       }
   });
+});
+
+app.listen(port, function() {
+  console.log('SHUBHAM GREAT LIVING RUNNING ON: http://localhost:' + port)
 });
