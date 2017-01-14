@@ -62,12 +62,12 @@
                 <fieldset>
                 <lable>2. TITLE...</lable><br><br>
                 <input type="text" name="title" id="title"  placeholder="Title" required="true"><hr>
-                <input type="text" name="timestamp" id="timestamp" placeholder="timestamp">
+                <input type="hidden" name="timestamp" id="timestamp" placeholder="timestamp">
                 <input type="hidden" id="image1" name="image1">
                 <lable>3. CONTACT INFORMATION...</lable><br><br>
-                <input type="text" name="phone" id="phone" value="2018875323" placeholder="Phone">
-                <input type="text" name="email" id="email" value="shubham20.yeole@gmail.com" placeholder="Email">
-                <input type="text" name="telephone" value="07172222931"  placeholder="Telephone"><hr>
+                <input type="text" name="phone" id="phone" value="" placeholder="Phone">
+                <input type="text" name="email" id="email" value="" placeholder="Email">
+                <input type="text" name="telephone" value=""  placeholder="Telephone"><hr>
                 <input type="hidden" name="latitude" id="latitude" placeholder="latitude" readonly="true">
                 <input type="hidden" name="longitude" id="longitude" placeholder="longitude" readonly="true">
                 <div id="floating-panel" style="display:none;">
@@ -106,17 +106,17 @@
                 </div><br><br>
 
                 <lable>7. ROOM / KITCHEN / WASHROOM...</lable><br><br>
-                <input type="text" name="bedroom" value="4" id="bedroom" placeholder="Bedroom">
-                <input type="text" name="kitchen" value="2" id="kitchen" placeholder="Kitchen">
-                <input type="text" name="bathroom" value="1" id="bathroom" placeholder="Bathroom"><hr>
+                <input type="text" name="bedroom" value="" id="bedroom" placeholder="Bedroom">
+                <input type="text" name="kitchen" value="" id="kitchen" placeholder="Kitchen">
+                <input type="text" name="bathroom" value="" id="bathroom" placeholder="Bathroom"><hr>
                 <input type="hidden" name="propertytype" value="Appartment" id="propertytype" placeholder="propertytype">
                 <input type="hidden" name="addtype" value="Rent" id="addtype" placeholder="propertytype">
                 <lable>8. AREA / PRICE / DESCRIPTION...</lable><br><br>
-                <input type="text" name="area" value="3422" id="area" placeholder="Area in sq feets">
+                <input type="text" name="area" value="" id="area" placeholder="Area in sq feets">
                 <input type="text" name="cost"  id="cost" placeholder="Price in USD">
-                <input type="text" name="discription" value="Spacious layout 1 bed room 1 bathroom apartment on the Hudson River water front Modern kitchen with granite and stainless steel Open layout with ample closet space Gorgeous New York city skyline view from living room and the bedroom Prewiring for telephone, cable/satellite TV, Wi-Fi, and Verizon FiOS 24 hour doorman and concierge Laundry on the floor Fabulous Amenities in the community 2 min walk to the Newport PATH & light rail station 5-7 min walk to Hoboken PATH, NJ Transit, Light rail and Bus Stand 2 min to Morton Williams 4 blocks to BJs and Shoprite Few minutes to New York City Onsite paid parking available Onsite paid additional storage available" id="discription"   placeholder="Discription"><hr>
+                <input type="text" name="discription" value="" id="discription"   placeholder="Discription"><hr>
                 </fieldset>
-                <input type="submit" id="submitForm" value="Actual Post Add">
+                <input type="submit" id="submitForm" style="display: none;" value="Actual Post Add">
               </form>
               <input type="submit" value="Save Post" id="uploadimage"><div id="loader"></div>
               <div id="showerror"></div>
