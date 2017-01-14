@@ -25,6 +25,7 @@ var blog=db.collection('blog');
 var session = require('client-sessions');
 var nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport")
+// smtp.gmail.com
 var smtpTransport = nodemailer.createTransport(smtpTransport({
     host : "smtp.sendgrid.net",
     secureConnection : false,
