@@ -1,6 +1,6 @@
 var express = require('express');
 var SparkPost = require('sparkpost');
-var sp = new SparkPost('9bf6b6d7079252cab943971ff90c08cc3a9cee0d');
+var sp = new SparkPost('xxx');
 var port = process.env.PORT || 3000
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -8,16 +8,16 @@ var expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var mongodb = require('mongodb')
 var collections = ["users", "blog", "comments", "property", "images", "notification", "bookmark", "messages","timetable", "timetablecategory", "timetablequestion", "locations"]
-var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds163387.mlab.com:63387/paceteam3', collections)
 
-var Client = require('ftp');
-var fs = require('fs');
-var config = {
-  host: 'ftp.byethost8.com',
-  port: 21,
-  user: 'b8_19205430',
-  password: 'Shubham4194'
-}
+var db = mongojs('mongodb://xxx:xxx@xxx.mlab.com:xxx/xxx', collections)
+var JSFtp = require("jsftp");
+
+var Ftp = new JSFtp({
+    host: 'ftp.xxx.com',
+    port: 21,
+    user: 'xxx',
+    password: 'XXX'
+});
 var app = express();
 var ObjectId = mongojs.ObjectId;
 var passport = require("passport")
