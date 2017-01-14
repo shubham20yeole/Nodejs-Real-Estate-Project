@@ -6,3 +6,34 @@
 #lodargif2{color: green; font-size: 1em; }
 .heading{font-weight: bold;}
 .righttr{margin-left: 20px}
+
+input[type="file"]{
+	position: relative;
+   font-family: calibri;
+   width: 40%;
+   padding: 10px;
+   font-size: 1.2em;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border: 1px dashed #BBB; 
+   text-align: center;
+   background-color: #DDD;
+   cursor:pointer;
+}
+input[type="submit"]{
+     background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 6px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+     background-color: #3B2F63;
+    color: white;
+    border: 2px solid #3B2F63;
+}

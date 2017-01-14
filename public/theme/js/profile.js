@@ -41,3 +41,15 @@ $(document).on("click","#emailtoadmin",function() {
           },2000);
     });
 });
+
+$(document).on("change","#dp",function() { 
+   var input = document.getElementById("dp");
+        var fReader = new FileReader();
+        fReader.readAsDataURL(input.files[0]);
+        fReader.onloadend = function(event){
+        var img = document.getElementById("profile_image");
+
+        img.src = event.target.result;
+        $("#profile_image").val(img.src);
+    }
+});

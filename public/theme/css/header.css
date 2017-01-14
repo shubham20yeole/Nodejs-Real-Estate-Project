@@ -1,1 +1,4 @@
 #sessionsec{color: red; padding-left: 2%; text-align: center; margin: auto; font-size: 2em;}
+#dp_right{float: right; right: 60px; position: fixed; top: 3px; border-radius: 50%; cursor: pointer;}
+#dp_right:hover{opacity: 0.5;
+    filter: alpha(opacity=50);}

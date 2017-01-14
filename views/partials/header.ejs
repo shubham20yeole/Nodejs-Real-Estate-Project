@@ -76,10 +76,10 @@
                     <a href="registerlogin" class="aa-register">SIGN UP</a>
                     <a href="registerlogin" class="aa-login">SIGN IN</a> 
                   <%}else{%> 
-                      <img src="<%=users.photo%>" width="32" height="32"> 
-                      <a href="/logout" class="aa-login"><%= users.fullname %></a>
-                      | <a href="/logout" class="aa-login">LOGOUT</a>
+<!--                       <img src="<%=users.photo%>" width="55" id="dp_right"> 
+ -->                      <a href="/profile/0" class="aa-login" target="_blank">UPDATE IMAGE?</a>
                       | <a href="/profile/0" class="aa-login">PROFILE</a>
+                      | <a href="/logout" class="aa-login">LOGOUT</a>
                   <%}%>
                    <% if(users.type == 'admin'){%>
                     <a href="../admin" class="aa-register"> | ADMIN</a>
@@ -175,10 +175,18 @@
               </div>
             </li>
           <%}%>          
-          </ul>                         
+          </ul>
+          <% if(users.fullname!='Anonymous'){%>
+            <ul>
+              <li>
+                <a href="/profile/0" target="_blank"><img src="<%=users.photo%>" width="55" id="dp_right"></a>
+              </li>
+            </ul> 
+          <%}%>                        
         </div>
 
       </div>          
     </nav> 
   </section>
+  
        

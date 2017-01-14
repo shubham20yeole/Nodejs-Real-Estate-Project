@@ -1,6 +1,6 @@
 var express = require('express');
 var SparkPost = require('sparkpost');
-var sp = new SparkPost('xxx');
+var sp = new SparkPost('9bf6b6d7079252cab943971ff90c08cc3a9cee0d');
 var port = process.env.PORT || 3000
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -8,16 +8,16 @@ var expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var mongodb = require('mongodb')
 var collections = ["users", "blog", "comments", "property", "images", "notification", "bookmark", "messages","timetable", "timetablecategory", "timetablequestion", "locations"]
+var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds163387.mlab.com:63387/paceteam3', collections)
 
-var db = mongojs('mongodb://xxx:xxx@xxx.mlab.com:xxx/xxx', collections)
-var JSFtp = require("jsftp");
-
-var Ftp = new JSFtp({
-    host: 'ftp.xxx.com',
-    port: 21,
-    user: 'xxx',
-    password: 'XXX'
-});
+var Client = require('ftp');
+var fs = require('fs');
+var config = {
+  host: 'ftp.byethost8.com',
+  port: 21,
+  user: 'b8_19205430',
+  password: 'Shubham4194'
+}
 var app = express();
 var ObjectId = mongojs.ObjectId;
 var passport = require("passport")
@@ -25,15 +25,13 @@ var blog=db.collection('blog');
 var session = require('client-sessions');
 var nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport")
-// smtp.gmail.com
-// smtp.sendgrid.net
 var smtpTransport = nodemailer.createTransport(smtpTransport({
     host : "smtp.sendgrid.net",
     secureConnection : false,
     port: 587,
     auth : {
         user : "shubham20.yeole@gmail.com",
-        pass : "xxx"
+        pass : "Shubham4194"
     }
 }));
 function sendEmail(email, subject, title, message){
@@ -258,6 +256,38 @@ var email = req.body.email;
   });
 });
 
+app.post('/updatedp', function(req, res){       
+  var file = req.files.file;
+  var filepath = file.path;
+  var timestamp = new Date().valueOf();
+  var dd = new Date();
+  var currentdate = dd.getMonth()+1+"/"+dd.getDate()+"/"+dd.getFullYear()+" at "+dd.getHours()+":"+dd.getMinutes();
+  var c = new Client();
+    c.on('ready', function() {
+      c.put(file.path, 'htdocs/public_html/user/'+"shubham-"+timestamp+"-"+file.originalFilename, function(err) {
+        if (err) throw err;
+         c.end();
+        });
+   });
+   c.connect(config);
+   var url = 'http://shubhamyeole.byethost8.com/public_html/user/'+"shubham-"+timestamp+"-"+file.originalFilename;
+   var newNotification = {
+          user: req.session.users._id,
+          username: req.session.users.fullname,
+          useremail: req.session.users.email,
+          action: 'Profile picture Changed',
+          noteimage: url,
+          dateField: currentdate,
+          message: "Image successfully changed"
+        }
+  setNotification(newNotification);
+   db.users.update({ email: req.session.users.email}, {$set:{photo: url}}, function (err, result) {
+      setTimeout(function(){ 
+        res.redirect("/profile/0");
+      }, 5000);    
+    });
+});
+
 app.post('/login', function(req, res) {
   db.users.findOne({ email: req.body.email }, function(err, users) {
     if (!users) {
@@ -288,10 +318,12 @@ app.post('/newpasswordupdate', function(req, res){
     // console.log("In newpasswordupdate method: "+req.body.email);
     var email = req.body.email;
   db.users.update({ email: req.body.email}, {$set:{password: req.body.passcode}}, function (err, result) {
-      req.session.users = result;
+    db.users.findOne({ email: req.body.email }, function(err, users) {
+      req.session.users = users;
       sendEmail(req.body.email, "Password Reset", "SUCCESSFULLY PASSWORD RESETTED ON Shubham-Great-Livings", "Your password is successfully resetted at Shubham-Great-Livings. If you have not done this action please let us know at shubham20.yeole@gmail.com. Click the button below to visit our platform. <br><br><a href='https://shubham-great-livings.herokuapp.com/' target='_blank'>HOME</a><br><br>");
       res.render("message.ejs",{property: "REGISTERED", status: 'registered', message: 'Password reset successful.', link: '<a href="/propertiesbymaps">Click me to view our properties by google map...</a>'});
     });
+  });
 });
 
 app.post('/resetpassword', function(req, res) {
