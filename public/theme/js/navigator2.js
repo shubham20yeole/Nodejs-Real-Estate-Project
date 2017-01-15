@@ -15,7 +15,7 @@ function longLatCurrent()
 
      function longLatCurrentsuccess(position)
      {
-
+        alert("SUCCESS");
          var long = position.coords.longitude;
          var lat = position.coords.latitude;
          demoLong = long;
@@ -28,10 +28,11 @@ function longLatCurrent()
 
       function longLatCurrentfail()
      {
+        alert("FAILS");
         demoLong = '-73.824582';
         demoLat = '40.670298';
         var task = document.getElementById("longLatCurrenttask").value; 
-         $.post( "/addloc", { long: '-73.824582', lat: '40.670298', task: task})
+         $.post( "/addloc2", { long: '-73.824582', lat: '40.670298', task: task})
             .done(function( property ) {  
         });     
     }
@@ -40,11 +41,13 @@ $(document).ready(function(){
     longLatCurrent();
      setTimeout(function(){ 
         if(demoLong==0 && demoLat==0){
+            alert("jQuery se karna hoga bhai");
             var task = document.getElementById("longLatCurrenttask").value; 
-            $.post( "/addloc", { long: '-73.824582', lat: '40.670298', task: task})
+            $.post( "/addloc2", { long: '-73.824582', lat: '40.670298', task: task})
                 .done(function( property ) {  
             }); 
         }else{
+        alert("SAB THIK HE BHAYA");
         }
     }, 5000);
 })
