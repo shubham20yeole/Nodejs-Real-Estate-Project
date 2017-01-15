@@ -1,21 +1,11 @@
 var demoLong = 0;
 var demoLat = 0;
-function longLatCurrent()
-     {
-        if( navigator.geolocation )
-        {
-           // Call getCurrentPosition with success and failure callbacks
-           navigator.geolocation.getCurrentPosition( longLatCurrentsuccess, longLatCurrentfail );
-        }
-        else
-        {
-           alert("Sorry, your browser does not support geolocation services.");
-        }
-     }
 
-     function longLatCurrentsuccess(position)
-     {
-        alert("SUCCESS");
+     function longLatCurrent(){
+         if( navigator.geolocation )  navigator.geolocation.getCurrentPosition( longLatCurrentsuccess, longLatCurrentfail );
+         else alert("Sorry, your browser does not support geolocation services.");
+     }
+     function longLatCurrentsuccess(position){
          var long = position.coords.longitude;
          var lat = position.coords.latitude;
          demoLong = long;
@@ -26,9 +16,7 @@ function longLatCurrent()
         });
      }
 
-      function longLatCurrentfail()
-     {
-        alert("FAILS");
+     function longLatCurrentfail(){
         demoLong = '-73.824582';
         demoLat = '40.670298';
         var task = document.getElementById("longLatCurrenttask").value; 
@@ -37,17 +25,16 @@ function longLatCurrent()
         });     
     }
 
-$(document).ready(function(){
+    $(document).ready(function(){
     longLatCurrent();
-     setTimeout(function(){ 
-        if(demoLong==0 && demoLat==0){
-            alert("jQuery se karna hoga bhai");
-            var task = document.getElementById("longLatCurrenttask").value; 
-            $.post( "/addloc2", { long: '-73.824582', lat: '40.670298', task: task})
-                .done(function( property ) {  
-            }); 
-        }else{
-        alert("SAB THIK HE BHAYA");
-        }
-    }, 5000);
-})
+        setTimeout(function(){ 
+            if(demoLong==0 && demoLat==0){
+                var task = document.getElementById("longLatCurrenttask").value; 
+                $.post( "/addloc2", { long: '-73.824582', lat: '40.670298', task: task})
+                    .done(function( property ) {  
+                }); 
+            }else{  
+
+            }
+        }, 5000);
+    })
