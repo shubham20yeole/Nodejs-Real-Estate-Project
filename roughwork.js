@@ -8,10 +8,8 @@ var expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var mongodb = require('mongodb')
 var collections = ["users", "blog", "comments", "property", "images", "notification", "bookmark", "messages","timetable", "timetablecategory", "timetablequestion", "locations"]
-
 var db = mongojs('mongodb://xxx:xxx@xxx.mlab.com:xxx/xxx', collections)
 var JSFtp = require("jsftp");
-
 var Ftp = new JSFtp({
     host: 'ftp.xxx.com',
     port: 21,
