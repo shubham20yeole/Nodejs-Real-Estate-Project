@@ -285,43 +285,6 @@ app.post('/updatedp', function(req, res){
     });
 });
 
-
-
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-// error handlers - these take err object.
-// these are per request error handlers.  They have two so in dev
-// you get a full stack trace.  In prod, first is never setup
-
-// development error handler
-// will print stacktrace
-
-app.get('*', function(req, res) {
-  res.send('<img src="images/404.jpg" width="100%" height="100%">');
-});
-
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render("404.ejs");
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
-
-
 app.post('/login', function(req, res) {
   db.users.findOne({ email: req.body.email }, function(err, users) {
     if (!users) {
@@ -761,7 +724,8 @@ app.get('/detailedproperty/:id', function(req, res){
   db.property.findOne({ timestamp: req.params.id}, function (err, property) {
       db.property.find({}).skip(0).sort({timestamp: -1}).limit(5).toArray(function (err, latestproperty) {
          db.images.find({ timestamp: req.params.id}, function (err, images) {
-          res.render("detailedproperty.ejs",{property: property, latestproperty: latestproperty, images: images, notifications: notifications});
+          if(property===null) res.render('404');
+          else res.render("detailedproperty.ejs",{property: property, latestproperty: latestproperty, images: images, notifications: notifications});
         }) 
      })      
   });
@@ -1192,3 +1156,11 @@ var date = new Date();
 var datetime = date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()+" at "+date.getHours()+":"+date.getMinutes();
 
 console.log(datetime);
+
+app.use(function(req, res, next){
+    res.status(404);
+  if (req.accepts('html')) {
+    res.render('404');
+    return;
+  }
+});
