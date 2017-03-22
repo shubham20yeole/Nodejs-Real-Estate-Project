@@ -1,6 +1,6 @@
 var express = require('express');
 var SparkPost = require('sparkpost');
-var sp = new SparkPost('xxx');
+var sp = new SparkPost('9bf6b6d7079252cab943971ff90c08cc3a9cee0d');
 var port = process.env.PORT || 3000
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -8,14 +8,15 @@ var expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var mongodb = require('mongodb')
 var collections = ["users", "blog", "comments", "property", "images", "notification", "bookmark", "messages","timetable", "timetablecategory", "timetablequestion", "locations"]
-var db = mongojs('mongodb://xxx:xxx@xxx.mlab.com:xxx/xxx', collections)
-var JSFtp = require("jsftp");
-var Ftp = new JSFtp({
-    host: 'ftp.xxx.com',
-    port: 21,
-    user: 'xxx',
-    password: 'XXX'
-});
+var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds163387.mlab.com:63387/paceteam3', collections)
+var Client = require('ftp');
+var fs = require('fs');
+var config = {
+  host: 'ftp.byethost8.com',
+  port: 21,
+  user: 'b8_19205430',
+  password: 'Shubham4194'
+}
 var app = express();
 var ObjectId = mongojs.ObjectId;
 var passport = require("passport")
@@ -23,15 +24,13 @@ var blog=db.collection('blog');
 var session = require('client-sessions');
 var nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport")
-// smtp.gmail.com
-// smtp.sendgrid.net
 var smtpTransport = nodemailer.createTransport(smtpTransport({
     host : "smtp.sendgrid.net",
     secureConnection : false,
     port: 587,
     auth : {
         user : "shubham20.yeole@gmail.com",
-        pass : "xxx"
+        pass : "**************"
     }
 }));
 function sendEmail(email, subject, title, message){
@@ -162,34 +161,6 @@ app.use(session({
 
 var dd = new Date();
 var currentdate = dd.getMonth()+" / "+dd.getDate()+" / "+dd.getFullYear()+" at "+dd.getHours()+":"+dd.getMinutes();
-
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-app.get('*', function(req, res) {
-  res.send('<img src="images/404.jpg" width="100%" height="100%">');
-});
-
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render("404.ejs");
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
-
       
 // ************************************* LOGIN ADD REGISTER *************************************************
 
@@ -316,6 +287,39 @@ app.post('/updatedp', function(req, res){
 
 
 
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// error handlers - these take err object.
+// these are per request error handlers.  They have two so in dev
+// you get a full stack trace.  In prod, first is never setup
+
+// development error handler
+// will print stacktrace
+
+app.get('*', function(req, res) {
+  res.send('<img src="images/404.jpg" width="100%" height="100%">');
+});
+
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render("404.ejs");
+    });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
 
 
 app.post('/login', function(req, res) {
