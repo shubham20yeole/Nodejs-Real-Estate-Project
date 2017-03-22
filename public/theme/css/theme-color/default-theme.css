@@ -33,9 +33,9 @@ h2 {
   color: #59abe3;
 }
 
-.pulse:before, .pulse:after {
+/*.pulse:before, .pulse:after {
   border: 5px solid #59abe3;
-}
+}*/
 
 #aa-menu-area .main-navbar .navbar-header .aa-logo span {
   color: #59abe3;
