@@ -8,7 +8,6 @@ $("#searchloccation").on("keyup change",function() {
     .done(function( data ) 
       {       
         $('#searchtable').show();
-
         $("#searchlength").text(data.length);
         $("#searchcity").text(loc);
         var xL = data.length;
@@ -19,13 +18,11 @@ $("#searchloccation").on("keyup change",function() {
         $("#displaysearch").empty();
         var temp = '<table width="100%" id="example1"><thead><tr><th>Address</th><th>Price</th><th>Area</th><th>Bedroom</th><th>View more</th></tr></thead><tbody id="displaysearch">'+html+'</tbody></table>';
         $('#showsearch').html(temp);
-              $('#example1').dataTable({"sPaginationType": "full_numbers", "oLanguage": {
-
-"sSearch": "FILTER:"
-
-},"bDestroy": true, "iDisplayLength": 10});
-              $(".dataTables_length select").addClass("selectEntry").attr("placeholder", "Filter search").append('<br><br><br><br>');
-     $(".dataTables_filter input").addClass("searchInput").attr("placeholder", "Filter search");;
-      });
+        $('#example1').dataTable({"sPaginationType": "full_numbers", "oLanguage": {
+            "sSearch": "FILTER:"
+          },"bDestroy": true, "iDisplayLength": 10});
+            $(".dataTables_length select").addClass("selectEntry").attr("placeholder", "Filter search").append('<br><br><br><br>');
+        $(".dataTables_filter input").addClass("searchInput").attr("placeholder", "Filter search");;
+        });
 
 });
